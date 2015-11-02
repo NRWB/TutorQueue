@@ -1,29 +1,26 @@
 <?php
 
 /**
- * Handles all data manipulation of the admin part
+ * Handles all data manipulation of the greeter part
  */
-class AdminModel {
+class GreeterModel {
 
-  public static function setAccountDeletionStatus($softDelete, $userId) {
+  public static function setRequestDetails($recordID, $tableNo, $subj, $subSubj, $tutName) {
     $database = DatabaseFactory::getFactory()->getConnection();
 
-    // FYI "on" is what a checkbox delivers by default when submitted.
-    if ($softDelete == "on") {
-      $delete = 1;
-    } else {
-      $delete = 0;
-    }
-
+    // to do = update according to the settings needed given func's params/args.
     $query = $database->prepare("UPDATE users SET user_deleted = :user_deleted  WHERE user_id = :user_id LIMIT 1");
     $query->execute(array(
       ':user_deleted' => $delete,
       ':user_id' => $userId
     ));
 
+    // to do = determine if needed below if-statement
     if ($query->rowCount() == 1) {
       Session::add('feedback_positive', Text::get('FEEDBACK_ACCOUNT_SUSPENSION_DELETION_STATUS'));
       return true;
     }
-  }
+
+  } // end of function
+
 }

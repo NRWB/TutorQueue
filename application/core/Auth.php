@@ -59,6 +59,26 @@ class Auth {
     }
   }
 
+  public static function checkGreeterAuthentication() {
+    Session::init();
+    // self::checkSessionConcurrency();
+    if (!Session::userIsLoggedIn() || Session::get("user_account_type") < 3) {
+      Session::destroy();
+      header('location: ' . Config::get('URL') . 'login');
+      exit();
+    }
+  }
+
+  public static function checkStudentAuthentication() {
+    Session::init();
+    // self::checkSessionConcurrency();
+    if (!Session::userIsLoggedIn() || Session::get("user_account_type") < 1) {
+      Session::destroy();
+      header('location: ' . Config::Get('URL') . 'login');
+      exit();
+    }
+  }
+
   /**
    * Detects if there is concurrent session(i.e. another user logged in with the same current user credentials),
    * If so, then logout.

@@ -2,72 +2,69 @@
 
 /**
  * LoginModel
- *
  * The login part of the model: Handles the login / logout stuff
  */
-class LoginModel
-{
-    /**
-     * Login process (for DEFAULT user accounts).
-     *
-     * @param $user_name string The user's name
-     * @param $user_password string The user's password
-     * @param $set_remember_me_cookie mixed Marker for usage of remember-me cookie feature
-     *
-     * @return bool success state
-     */
-    public static function login($user_name, $user_password, $set_remember_me_cookie = null)
-    {
-        // we do negative-first checks here, for simplicity empty username and empty password in one line
-        if (empty($user_name) OR empty($user_password)) {
-            Session::add('feedback_negative', Text::get('FEEDBACK_USERNAME_OR_PASSWORD_FIELD_EMPTY'));
-            return false;
-        }
-
-	    // checks if user exists, if login is not blocked (due to failed logins) and if password fits the hash
-	    $result = self::validateAndGetUser($user_name, $user_password);
-
-        // check if that user exists. We don't give back a cause in the feedback to avoid giving an attacker details.
-        if (!$result) {
-            //No Need to give feedback here since whole validateAndGetUser controls gives a feedback
-            return false;
-        }
-
-        // stop the user's login if account has been soft deleted
-        if ($result->user_deleted == 1) {
-            Session::add('feedback_negative', Text::get('FEEDBACK_DELETED'));
-            return false;
-        }
-
-        // stop the user from logging in if user has a suspension, display how long they have left in the feedback.
-        if ($result->user_suspension_timestamp != null && $result->user_suspension_timestamp - time() > 0) {
-            $suspensionTimer = Text::get('FEEDBACK_ACCOUNT_SUSPENDED') . round(abs($result->user_suspension_timestamp - time())/60/60, 2) . " hours left";
-            Session::add('feedback_negative', $suspensionTimer);
-            return false;
-        }
-
-        // reset the failed login counter for that user (if necessary)
-        if ($result->user_last_failed_login > 0) {
-            self::resetFailedLoginCounterOfUser($result->user_name);
-        }
-
-        // save timestamp of this login in the database line of that user
-        self::saveTimestampOfLoginOfUser($result->user_name);
-
-        // if user has checked the "remember me" checkbox, then write token into database and into cookie
-        if ($set_remember_me_cookie) {
-            self::setRememberMeInDatabaseAndCookie($result->user_id);
-        }
-
-        // successfully logged in, so we write all necessary data into the session and set "user_logged_in" to true
-        self::setSuccessfulLoginIntoSession(
-            $result->user_id, $result->user_name, $result->user_email, $result->user_account_type
-        );
-
-        // return true to make clear the login was successful
-        // maybe do this in dependence of setSuccessfulLoginIntoSession ?
-        return true;
+class LoginModel {
+  /**
+   * Login process (for DEFAULT user accounts).
+   *
+   * @param $user_name string The user's name
+   * @param $user_password string The user's password
+   * @param $set_remember_me_cookie mixed Marker for usage of remember-me cookie feature
+   *
+   * @return bool success state
+   */
+  public static function login($user_name, $user_password, $set_remember_me_cookie = null) {
+    // we do negative-first checks here, for simplicity empty username and empty password in one line
+    if (empty($user_name) OR empty($user_password)) {
+      Session::add('feedback_negative', Text::get('FEEDBACK_USERNAME_OR_PASSWORD_FIELD_EMPTY'));
+      return false;
     }
+
+    // checks if user exists, if login is not blocked (due to failed logins) and if password fits the hash
+    $result = self::validateAndGetUser($user_name, $user_password);
+
+    // check if that user exists. We don't give back a cause in the feedback to avoid giving an attacker details.
+    if (!$result) {
+      //No Need to give feedback here since whole validateAndGetUser controls gives a feedback
+      return false;
+    }
+
+    // stop the user's login if account has been soft deleted
+    if ($result->user_deleted == 1) {
+        Session::add('feedback_negative', Text::get('FEEDBACK_DELETED'));
+        return false;
+    }
+
+    // stop the user from logging in if user has a suspension, display how long they have left in the feedback.
+    if ($result->user_suspension_timestamp != null && $result->user_suspension_timestamp - time() > 0) {
+      $suspensionTimer = Text::get('FEEDBACK_ACCOUNT_SUSPENDED') . round(abs($result->user_suspension_timestamp - time())/60/60, 2) . " hours left";
+      Session::add('feedback_negative', $suspensionTimer);
+      return false;
+    }
+
+    // reset the failed login counter for that user (if necessary)
+    if ($result->user_last_failed_login > 0) {
+      self::resetFailedLoginCounterOfUser($result->user_name);
+    }
+
+    // save timestamp of this login in the database line of that user
+    self::saveTimestampOfLoginOfUser($result->user_name);
+
+    // if user has checked the "remember me" checkbox, then write token into database and into cookie
+    if ($set_remember_me_cookie) {
+      self::setRememberMeInDatabaseAndCookie($result->user_id);
+    }
+
+    // successfully logged in, so we write all necessary data into the session and set "user_logged_in" to true
+    self::setSuccessfulLoginIntoSession(
+      $result->user_id, $result->user_name, $result->user_email, $result->user_account_type
+    );
+
+    // return true to make clear the login was successful
+    // maybe do this in dependence of setSuccessfulLoginIntoSession ?
+    return true;
+  }
 
 	/**
 	 * Validates the inputs of the users, checks if password is correct etc.
@@ -87,7 +84,7 @@ class LoginModel
 			Session::add('feedback_negative', Text::get('FEEDBACK_LOGIN_FAILED_3_TIMES'));
 			return false;
 		}
-		
+
 		// get all data of that user (to later check if password and password_hash fit)
 		$result = UserModel::getUserDataByUsername($user_name);
 
@@ -110,7 +107,7 @@ class LoginModel
 		// if hash of provided password does NOT match the hash in the database: +1 failed-login counter
 		if (!password_verify($user_password, $result->user_password_hash)) {
 			self::incrementFailedLoginCounterOfUser($result->user_name);
-			Session::add('feedback_negative', Text::get('FEEDBACK_USERNAME_OR_PASSWORD_WRONG')); 
+			Session::add('feedback_negative', Text::get('FEEDBACK_USERNAME_OR_PASSWORD_WRONG'));
 			return false;
 		}
 
@@ -332,7 +329,7 @@ class LoginModel
         $cookie_string_first_part = Encryption::encrypt($user_id) . ':' . $random_token_string;
         $cookie_string_hash       = hash('sha256', $user_id . ':' . $random_token_string);
         $cookie_string            = $cookie_string_first_part . ':' . $cookie_string_hash;
-		
+
 		// set cookie, and make it available only for the domain created on (to avoid XSS attacks, where the
         // attacker could steal your remember-me cookie string and would login itself).
         // If you are using HTTPS, then you should set the "secure" flag (the second one from right) to true, too.

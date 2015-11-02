@@ -206,11 +206,12 @@ class LoginController extends Controller {
    * Show the register form, but redirect to main-page if user is already logged-in
    */
   public function register() {
-    if (LoginModel::isUserLoggedIn()) {
-      Redirect::home();
-    } else {
+
+//    if (LoginModel::isUserLoggedIn()) {
+//      Redirect::home();
+//    } else {
       $this->View->render('login/register');
-    }
+//    }
   }
 
   /**

@@ -5,8 +5,7 @@
  * Handles all the PUBLIC profile stuff. This is not for getting data of the logged in user, it's more for handling
  * data of all the other users. Useful for display profile information, creating user lists etc.
  */
-class UserModel
-{
+class UserModel {
     /**
      * Gets an array that contains all the users in the database. The array's keys are the user ids.
      * Each array element is an object, containing a specific user's data.
@@ -15,8 +14,7 @@ class UserModel
      *
      * @return array The profiles of all users
      */
-    public static function getPublicProfilesOfAllUsers()
-    {
+    public static function getPublicProfilesOfAllUsers() {
         $database = DatabaseFactory::getFactory()->getConnection();
 
         $sql = "SELECT user_id, user_name, user_email, user_active, user_has_avatar, user_deleted FROM users";

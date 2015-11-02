@@ -8,19 +8,39 @@
         <?php $this->renderFeedbackMessages(); ?>
 
         <div id="redirectToPage"></div>
+/*
+  <?php if (Session::get("user_account_type") == 7) : ?>
+  <?php endif; ?>
 
-        <script>
+  <?php if (Session::get("user_account_type") == 7) : ?>
+
+    <li <?php if (View::checkForActiveController($filename, "index")) { echo ' class="active" '; } ?> >
+    </li>
+
+  <?php endif; ?>
+
+
+  <?php if (Session::get("user_account_type") == 7) : ?>
+  <?php endif; ?>
+*/
+       <script>
         var accLvl = <?= $this->user_account_type; ?>;
         var dispTxt;
         switch (accLvl) {
           case 1:
-            dispTxt = "Student Lvl 1";
+            document.getElementById("redirectToPage").innerHTML = "Redirecting to student view";
+            window.location.replace("<?php echo Config::get('URL'); ?>student/index");
+            break;
+          case 3:
+            document.getElementById("redirectToPage").innerHTML = "Redirecting to greeter view";
+            window.location.replace("<?php echo Config::get('URL'); ?>greeter/index");
             break;
           case 7:
             document.getElementById("redirectToPage").innerHTML = "Redirecting to admin view";
-            window.location.replace("../");
+            window.location.replace("<?php echo Config::get('URL'); ?>admin/index");
             break;
         }
         </script>
+
     </div>
 </div>

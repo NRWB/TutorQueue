@@ -1,6 +1,6 @@
 <?php
 
-class AdminController extends Controller {
+class StudentController extends Controller {
 
   /**
    * Construct this object by extending the basic Controller class
@@ -11,31 +11,26 @@ class AdminController extends Controller {
     //   Note the check-ADMIN-authentication!
     // All methods inside this controller are only
     //   accessible for admins (= users that have role type 7)
-    Auth::checkAdminAuthentication();
+    Auth::checkStudentAuthentication();
   }
 
   /**
    * This method controls what happens when you move to /admin or /admin/index in your app.
    */
   public function index() {
-    $this->View->render('admin/index');
-  }
-
-  public function panel() {
-    $this->View->renderWithoutHeaderAndFooter('admin/panel');
-  }
-
-  public function editAccounts() {
-    $this->View->render('admin/editAccounts',
-      array('users' => UserModel::getPublicProfilesOfAllUsers())
+    $this->View->render('student/index',
+      array('subjs' => StudentModel::getSubjects())
+//      array('subsubjs' => StudentModel::getSubSubjects()),
+//      array('activeTutors' => StudentModel::getActiveTutors())
     );
   }
 
-  public function actionAccountSettings() {
+  public function addRequest() {
     AdminModel::setAccountDeletionStatus(
       Request::post('softDelete'),
       Request::post('user_id')
     );
     Redirect::to("admin/editAccounts");
   }
+
 }
