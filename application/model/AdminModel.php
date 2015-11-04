@@ -26,4 +26,10 @@ class AdminModel {
       return true;
     }
   }
+
+  public static function getQuickNotes() {
+    $database = DatabaseFactory::getFactory()->getConnection();
+    $sql = "SELECT * FROM qscQueue.tblTutorQuickNotes";
+    return $database->query($sql);
+  }
 }

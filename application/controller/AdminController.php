@@ -31,6 +31,20 @@ class AdminController extends Controller {
     );
   }
 
+  public function editDropDowns() {
+    $this->View->render('admin/editDropDowns',
+      array('quicknotes' => AdminModel::getQuickNotes())
+    );
+  }
+
+  public function uploadSchedule() {
+    $this->View->render('admin/uploadSchedule');
+  }
+
+  public function dataDump() {
+    $this->View->render('admin/dataDump');
+  }
+
   public function actionAccountSettings() {
     AdminModel::setAccountDeletionStatus(
       Request::post('softDelete'),

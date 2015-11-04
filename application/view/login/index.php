@@ -28,9 +28,6 @@
           <input type="hidden" name="csrf_token" value="<?= Csrf::makeToken(); ?>" />
           <input type="submit" class="login-submit-button" value="Log in"/>
         </form>
-        <div class="link-forgot-my-password">
-          <a href="<?php echo Config::get('URL'); ?>login/requestPasswordReset">I forgot my password</a>
-        </div>
       </div>
     </div>
   </div>

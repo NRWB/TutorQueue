@@ -18,22 +18,19 @@
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <div class="table-responsive">
-                      <form action="insertStudent.php" method="post">
 
                         <table class="table table-bordered table-hover">
                           <tr>
                             <td>Subject (Required)</td>
                             <td>
 
-                              <form onChange="selectSS()">
-
-                                <select id="subjectDropDownID">
-                                  <option value="0"></option>
+                              <form action="updateDropDowns.php" method="post">
+                                <select id="subjectDropDownID" onchange="selectSS()">
+                                  <option></option>
                                   <?php foreach (StudentModel::getSubjects() as $subj) { ?>
                                     <option value=\"<?= $subj->id; ?>"><?= $subj->name; ?></option>
                                   <?php } ?>
                                 </select>
-
                               </form>
 
                             </td>
@@ -42,8 +39,16 @@
                             <td>Sub-Subject (Optional)</td>
                             <td>
 
-                              <select id="subSubjectDropDownID">
-                              </select>
+<!--
+  Note: Cannot work in change to auto-update based off of subject ID
+-->
+                                <select id="subSubjectDropDownID">
+                                  <option></option>
+                                  <?php foreach (StudentModel::getSubSubjectsAll() as $subj) { ?>
+                                    <option value=\"<?= $subj->id; ?>"><?= $subj->exactName; ?></option>
+                                  <?php } ?>
+                                </select>
+
 
                             </td>
                           </tr>
@@ -60,11 +65,16 @@
                           </tr>
                           <tr align="center">
                             <td colspan="2">
-                              <input type="submit" value="submit">
+
+                      <form action="insertStudent.php" method="post">
+                            <input type="submit" value="submit">
+                      </form>
+
+
                             </td>
                           </tr>
                         </table>
-                      </form>
+
                     </div>
                   </div>
 
@@ -92,6 +102,7 @@
         </div>
       </div>
     </div>
+
 
   </div>
 </div>

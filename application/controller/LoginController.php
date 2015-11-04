@@ -92,8 +92,6 @@ class LoginController extends Controller {
     $this->View->render('login/showProfile', array(
       'user_name' => Session::get('user_name'),
       'user_email' => Session::get('user_email'),
-      'user_gravatar_image_url' => Session::get('user_gravatar_image_url'),
-      'user_avatar_file' => Session::get('user_avatar_file'),
       'user_account_type' => Session::get('user_account_type')
     ));
   }
@@ -142,37 +140,6 @@ class LoginController extends Controller {
     Redirect::to('login/editUserEmail');
   }
 
-  /**
-   * Edit avatar
-   * Auth::checkAuthentication() makes sure that only logged in users can use this action and see this page
-   */
-  public function editAvatar() {
-    Auth::checkAuthentication();
-    $this->View->render('login/editAvatar', array(
-      'avatar_file_path' => AvatarModel::getPublicUserAvatarFilePathByUserId(Session::get('user_id'))
-    ));
-  }
-
-  /**
-   * Perform the upload of the avatar
-   * Auth::checkAuthentication() makes sure that only logged in users can use this action and see this page
-   * POST-request
-   */
-  public function uploadAvatar_action() {
-    Auth::checkAuthentication();
-    AvatarModel::createAvatar();
-    Redirect::to('login/editAvatar');
-  }
-
-  /**
-   * Delete the current user's avatar
-   * Auth::checkAuthentication() makes sure that only logged in users can use this action and see this page
-   */
-  public function deleteAvatar_action() {
-    Auth::checkAuthentication();
-    AvatarModel::deleteAvatar(Session::get("user_id"));
-    Redirect::to('login/editAvatar');
-  }
 
   /**
    * Show the change-account-type page
@@ -315,15 +282,4 @@ class LoginController extends Controller {
       Redirect::to('login/changePassword');
   }
 
-  /**
-   * Generate a captcha, write the characters into $_SESSION['captcha'] and returns a real image which will be used
-   * like this: <img src="......./login/showCaptcha" />
-   * IMPORTANT: As this action is called via <img ...> AFTER the real application has finished executing (!), the
-   * SESSION["captcha"] has no content when the application is loaded. The SESSION["captcha"] gets filled at the
-   * moment the end-user requests the <img .. >
-   * Maybe refactor this sometime.
-   */
-  public function showCaptcha() {
-    CaptchaModel::generateAndShowCaptcha();
-  }
 }

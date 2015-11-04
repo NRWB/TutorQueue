@@ -1,36 +1,35 @@
 <div class="container">
-  <h1>Add/Remove Accounts</h1>
+  <h1>Edit Accounts</h1>
 
   <div class="box">
 
     <!-- echo out the system feedback (error and success messages) -->
     <?php $this->renderFeedbackMessages(); ?>
 
-    <div>
-      <form action="<?= config::get("URL"); ?>login/register" method="post">
-        <input type="submit" value="Add Account" />
-      </form>
-    </div>
+
+<div class="text-center">
+<div class="panel panel-default">
+<div class="row">
+<div class="col-lg-12">
+
     <div>
       <table class="overview-table">
         <thead>
         <tr>
           <td>Id</td>
           <td>Username</td>
-          <td>User's email</td>
-          <td>Activated ?</td>
-          <td>Soft delete</td>
+          <td>Password</td>
+          <td>Delete</td>
           <td>Submit</td>
         </tr>
         </thead>
         <?php foreach ($this->users as $user) { ?>
-          <tr class="<?= ($user->user_active == 0 ? 'inactive' : 'active'); ?>">
+          <tr>
             <td><?= $user->user_id; ?></td>
             <td><?= $user->user_name; ?></td>
-            <td><?= $user->user_email; ?></td>
-            <td><?= ($user->user_active == 0 ? 'No' : 'Yes'); ?></td>
+            <td><a href="<?= config::get("URL"); ?>login/changePassword"><u>Change Password</u></a></td>
             <form action="<?= config::get("URL"); ?>admin/actionAccountSettings" method="post">
-              <td><input type="checkbox" name="softDelete" <?php if ($user->user_deleted) { ?> checked <?php } ?> /></td>
+              <td><input type="checkbox" name="softDelete" /></td>
               <td>
                 <input type="hidden" name="user_id" value="<?= $user->user_id; ?>" />
                 <input type="submit" />
@@ -40,5 +39,18 @@
         <?php } ?>
       </table>
     </div>
+
+</div>
+</div>
+</div>
+</div>
+
+    <div>
+      <form action="<?= config::get("URL"); ?>login/register" method="post">
+        <input type="submit" value="Add Account" />
+      </form>
+    </div>
+
+
   </div>
 </div>

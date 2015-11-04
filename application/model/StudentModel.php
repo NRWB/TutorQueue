@@ -35,6 +35,12 @@ class StudentModel {
     return $query->fetchAll();
   }
 
+  public static function getSubSubjectsAll() {
+    $database = DatabaseFactory::getFactory()->getConnection();
+    $query = $database->query("SELECT * FROM qscSubjects.tblTutorSubSubjects");
+    return $query->fetchAll();
+  }
+
   public static function getActiveTutors() {
   }
 }

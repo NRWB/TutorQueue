@@ -5,7 +5,20 @@
     <!-- echo out the system feedback (error and success messages) -->
     <?php $this->renderFeedbackMessages(); ?>
 
+    <div class="panel panel-default">
 
+     <!-- Default panel contents -->
+     <div class="panel-heading">
+       Tutor Help Requests Panel
+     </div>
+
+     <table class="table">
+
+       <tr><td>Empty.</td></tr>
+
+     </table>
+
+    </div>
 
   </div>
 

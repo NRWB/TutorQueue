@@ -31,6 +31,9 @@
           <li <?php if (View::checkForActiveController($filename, "greeter")) { echo ' class="active" '; } ?> >
             <a href="<?php echo Config::get('URL'); ?>greeter/index">Greeter Home</a>
           </li>
+          <li <?php if (View::checkForActiveController($filename, "student")) { echo ' class="active" '; } ?> >
+            <a href="<?php echo Config::get('URL'); ?>student/index">Student Home</a>
+          </li>
         <?php endif; ?>
 
         <!-- Greeters -->
@@ -64,3 +67,9 @@
 
       <?php endif; ?>
     </ul>
+
+    <?php if (Session::userIsLoggedIn()) { ?>
+      <div class="panel panel-header">
+        Logged in as: <?php echo Session::get("user_name"); ?>
+      </div>
+    <?php } ?>
