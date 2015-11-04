@@ -9,7 +9,7 @@ return array(
   "FEEDBACK_UNKNOWN_ERROR" => "Unknown error occurred!",
   "FEEDBACK_DELETED" => "Your account has been deleted.",
   "FEEDBACK_ACCOUNT_SUSPENDED" => "Account Suspended for ",
-  "FEEDBACK_ACCOUNT_SUSPENSION_DELETION_STATUS" => "This user's suspension / deletion status has been edited.",
+  "FEEDBACK_ACCOUNT_SUSPENSION_DELETION_STATUS" => "This user's deletion status has been edited.",
   "FEEDBACK_PASSWORD_WRONG_3_TIMES" => "You have typed in a wrong password 3 or more times already. Please wait 30 seconds to try again.",
   "FEEDBACK_ACCOUNT_NOT_ACTIVATED_YET" => "Your account is not activated yet. Please click on the confirm link in the mail.",
   "FEEDBACK_USERNAME_OR_PASSWORD_WRONG" => "The username or password is incorrect. Please try again.",

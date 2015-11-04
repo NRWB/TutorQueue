@@ -24,13 +24,16 @@
                           <tr>
                             <td>Subject (Required)</td>
                             <td>
+
                               <form onChange="selectSS()">
-                              <select id="subjectDD">
-                                <option value="0"></option>
-                                <?php foreach (StudentModel::getSubjects() as $subj) { ?>
-                                  <option value=\"<?= $subj->id; ?>"><?= $subj->name; ?></option>
-                                <?php } ?>
-                              </select>
+
+                                <select id="subjectDropDownID">
+                                  <option value="0"></option>
+                                  <?php foreach (StudentModel::getSubjects() as $subj) { ?>
+                                    <option value=\"<?= $subj->id; ?>"><?= $subj->name; ?></option>
+                                  <?php } ?>
+                                </select>
+
                               </form>
 
                             </td>
@@ -39,7 +42,7 @@
                             <td>Sub-Subject (Optional)</td>
                             <td>
 
-                              <select id="subSubjectID">
+                              <select id="subSubjectDropDownID">
                               </select>
 
                             </td>
@@ -47,7 +50,7 @@
                           <tr>
                             <td>Tutor (Optional)</td>
                             <td>
-                              <select name="requestedtutor">
+                              <select name="requestedTutorID">
                                 <option value="opt"></option>
                                 <option value="john">John</option>
                                 <option value="joe">Joe</option>

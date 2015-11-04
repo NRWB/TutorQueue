@@ -1,9 +1,8 @@
 {
-    "name": "panique/huge",
+    "name": "nrwb/TutorQueue",
     "type": "project",
-    "description": "A full-feature user authentication / login system embedded into a simple but powerful MVC framework structure",
-    "keywords": ["login", "auth", "user", "authentication", "mvc", "membership"],
-    "homepage": "https://github.com/panique/huge",
+    "description": "Initially, UWB CSS Capstone project. Designed to service students with tutor assistance.",
+    "homepage": "https://github.com/nrwb/TutorQueue",
     "license": "MIT",
     "require-dev": {
         "php": ">=5.5.0",

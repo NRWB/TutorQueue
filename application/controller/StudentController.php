@@ -26,11 +26,13 @@ class StudentController extends Controller {
   }
 
   public function addRequest() {
-    AdminModel::setAccountDeletionStatus(
-      Request::post('softDelete'),
-      Request::post('user_id')
+    StudentModel::addRequestToQueue(
+      // The form id information that is submitted to the database.
+      Request::post('subjectDropDownID'),
+      Request::post('subSubjectDropDownID'),
+      Request::post('requestedTutorID')
     );
-    Redirect::to("admin/editAccounts");
+    Redirect::to("student/index");
   }
 
 }
