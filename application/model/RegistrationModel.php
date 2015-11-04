@@ -23,7 +23,7 @@ class RegistrationModel {
     $user_password_repeat = Request::post('user_password_repeat');
 
     // stop registration flow if registrationInputValidation() returns false (= anything breaks the input check rules)
-    $validation_result = self::registrationInputValidation(Request::post('captcha'), $user_name, $user_password_new, $user_password_repeat, $user_email);
+    $validation_result = self::registrationInputValidation($user_name, $user_password_new, $user_password_repeat, $user_email);
     if (!$validation_result) {
       return false;
     }
@@ -91,17 +91,14 @@ class RegistrationModel {
    *
    * @return bool
    */
-  public static function registrationInputValidation($captcha, $user_name, $user_password_new, $user_password_repeat, $user_email) {
+  public static function registrationInputValidation($user_name, $user_password_new, $user_password_repeat, $user_email) {
     $return = true;
 
-    // perform all necessary checks
-    if (!CaptchaModel::checkCaptcha($captcha)) {
-      Session::add('feedback_negative', Text::get('FEEDBACK_CAPTCHA_WRONG'));
-      $return = false;
-    }
-
     // if username, email and password are all correctly validated, but make sure they all run on first sumbit
-    if (self::validateUserName($user_name) AND self::validateUserEmail($user_email) AND self::validateUserPassword($user_password_new, $user_password_repeat) AND $return) {
+    if (self::validateUserName($user_name)
+        AND self::validateUserEmail($user_email)
+        AND self::validateUserPassword($user_password_new, $user_password_repeat)
+        AND $return) {
       return true;
     }
 

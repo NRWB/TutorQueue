@@ -6,6 +6,7 @@
  * properly (=logout). Not to forget the check if the user is logged in or not.
  */
 class Session {
+
   /**
    * starts the session
    */
