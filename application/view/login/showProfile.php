@@ -8,21 +8,6 @@
         <?php $this->renderFeedbackMessages(); ?>
 
         <div id="redirectToPage"></div>
-/*
-  <?php if (Session::get("user_account_type") == 7) : ?>
-  <?php endif; ?>
-
-  <?php if (Session::get("user_account_type") == 7) : ?>
-
-    <li <?php if (View::checkForActiveController($filename, "index")) { echo ' class="active" '; } ?> >
-    </li>
-
-  <?php endif; ?>
-
-
-  <?php if (Session::get("user_account_type") == 7) : ?>
-  <?php endif; ?>
-*/
        <script>
         var accLvl = <?= $this->user_account_type; ?>;
         var dispTxt;
