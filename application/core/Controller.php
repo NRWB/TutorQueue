@@ -7,6 +7,7 @@
  * 2. check if the user is not logged in anymore (session timeout) but has a cookie
  */
 class Controller {
+
   /** @var View View The view object */
   public $View;
 

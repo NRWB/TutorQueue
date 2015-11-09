@@ -20,7 +20,9 @@
  * Thanks! Big up, mate!
  */
 class DatabaseFactory {
+
   private static $factory;
+
   private $database;
 
   public static function getFactory() {

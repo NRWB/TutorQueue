@@ -9,100 +9,83 @@
         <div class="col-lg-12">
           <div class="panel panel-default">
 
-            <div class="panel-heading">
-              Create a Requests Panel
-            </div>
+            <div class="panel-heading">Create a Requests Panel</div>
 
             <div class="row">
               <div class="col-lg-12">
                 <div class="panel panel-default">
+
                   <div class="panel-body">
                     <div class="table-responsive">
 
-                        <table class="table table-bordered table-hover">
-                          <tr>
-                            <td>Subject (Required)</td>
-                            <td>
+                       <form method="post" action="<?php echo Config::get('URL');?>HelpRequest/create">
 
-                              <form action="updateDropDowns.php" method="post">
-                                <select id="subjectDropDownID" onchange="selectSS()">
-                                  <option></option>
-                                  <?php foreach (StudentModel::getSubjects() as $subj) { ?>
-                                    <option value=\"<?= $subj->id; ?>"><?= $subj->name; ?></option>
-                                  <?php } ?>
-                                </select>
-                              </form>
+                       <table class="table table-bordered table-hover">
 
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Sub-Subject (Optional)</td>
-                            <td>
+                        <tr>
+                          <td>Subject (Required)</td>
+                          <td>
+                            <select name="subj_DD">
+                              <!-- this PHP will initially populate the DropDown when the page loads. -->
+                              <?php foreach (StudentModel::getSubjects() as $subj) { ?>
+                                <option value="<?= $subj->name; ?>"><?= $subj->name; ?></option>
+                              <?php } ?>
+                            </select>
+                          </td>
+                        </tr>
 
-<!--
-  Note: Cannot work in change to auto-update based off of subject ID
--->
-                                <select id="subSubjectDropDownID">
-                                  <option></option>
-                                  <?php foreach (StudentModel::getSubSubjectsAll() as $subj) { ?>
-                                    <option value=\"<?= $subj->id; ?>"><?= $subj->exactName; ?></option>
-                                  <?php } ?>
-                                </select>
+                        <tr>
+                          <td>Sub-Subject (Optional)</td>
+                          <td>
+                            <select name="sub_subj_DD">
+                            </select>
+                          </td>
+                        </tr>
 
+                        <tr>
+                          <td>Tutor (Optional)</td>
+                          <td>
+                            <select name="req_tutor_DD">
+                            </select>
+                          </td>
+                        </tr>
 
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Tutor (Optional)</td>
-                            <td>
-                              <select name="requestedTutorID">
-                                <option value="opt"></option>
-                                <option value="john">John</option>
-                                <option value="joe">Joe</option>
-                                <option value="jim">Jim</option>
-                              </select>
-                            </td>
-                          </tr>
-                          <tr align="center">
-                            <td colspan="2">
+                        <tr align="center">
+                          <td colspan="2">
+                            <input id="student_submit" type="submit" value="submit">
+                          </td>
+                        </tr>
 
-                      <form action="insertStudent.php" method="post">
-                            <input type="submit" value="submit">
+                      </table>
+
                       </form>
 
-
-                            </td>
-                          </tr>
-                        </table>
-
-                    </div>
-                  </div>
+                    </div> <!-- End "table-responsive" -->
+                  </div> <!-- End "panel-body" -->
 
                   <div align="right">
                     <div class="panel-body">
-
-                      <div class="col-xs-12">
-                        Enter Tutor Code:
-                      </div>
-
-                      <div class="col-xs-4 col-xs-offset-8">
-                        <input type="text" class="form-control" id="tutorcode">
-                      </div>
-
-                      <div class="col-xs-12">
-                        <button type="button" class="btn btn-default">Enter Tutor Portal</button>
-                      </div>
-
+                      <div class="col-xs-12">Enter Tutor Code:</div>
+                      <div class="col-xs-4 col-xs-offset-8"><input type="text" class="form-control" id="tutorcode"></div>
+                      <div class="col-xs-12"><button type="button" class="btn btn-default">Enter Tutor Portal</button></div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+                </div> <!-- end "panel panel-default" -->
+              </div> <!-- end "col-lg-12" -->
+            </div> <!-- end "row" -->
+
+          </div> <!-- end "panel panel-default" -->
+        </div> <!-- end "col-lg-12" -->
+      </div> <!-- end "row" -->
+    </div> <!-- end "text-center" -->
 
 
-  </div>
-</div>
+  </div> <!-- end "box" -->
+</div> <!-- end "container" -->
+
+<script>
+function postData() {
+    $
+}
+</script>

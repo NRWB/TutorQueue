@@ -41,4 +41,5 @@ function selectSS() {
     var sel = subs.options[subs.options.length];
     subs.add(opt, sel);
   <?php> } ?>
+  return subs.options;
 }

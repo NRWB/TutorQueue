@@ -11,9 +11,20 @@
   <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/bootstrap.min.css" />
   <script src="<?php echo Config::get('URL'); ?>js/bootstrap.min.js"></script>
   <script src="<?php echo Config::get('URL'); ?>js/jquery-1.11.3.min.js"></script>
-  <script src="<?php echo Config::get('URL'); ?>js/myJSSnippets.js"></script>
+  <script src="<?php echo Config::get('URL'); ?>js/nrwb.js"></script>
 </head>
 <body>
+
+<script language="javascript" type="text/javascript">
+  $(document).ready(function() {
+    refreshTable();
+  });
+  function refreshTable() {
+    $('tableHolder').load('<?php echo Config::get('URL'); ?>student/getTable.php", function() {
+      setTimeout(refreshTable, 3000);
+    });
+  }
+</script>
 
   <!-- wrapper, to center website -->
   <div class="wrapper">

@@ -56,4 +56,7 @@ return array(
   "FEEDBACK_ACCOUNT_TYPE_CHANGE_FAILED" => "Account type change failed",
   "FEEDBACK_COOKIE_INVALID" => "Your remember-me-cookie is invalid.",
   "FEEDBACK_COOKIE_LOGIN_SUCCESSFUL" => "You were successfully logged in via the remember-me-cookie.",
+  "FEEDBACK_HELP_REQUEST_CREATION_FAILED" => "Help Request creation failed.",
+  "FEEDBACK_HELP_REQUEST_EDITING_FAILED" => "Help Request editing failed.",
+  "FEEDBACK_HELP_REQUEST_DELETION_FAILED" => "Help Request deletion failed.",
 );
