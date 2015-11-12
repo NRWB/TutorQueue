@@ -18,11 +18,16 @@ class StudentController extends Controller {
    * This method controls what happens when you move to /admin or /admin/index in your app.
    */
   public function index() {
-    $this->View->render('student/index',
+//    $this->View->render('student/index',
+    $this->View->renderWithoutHeaderAndFooter('student/index',
       array('subjs' => StudentModel::getSubjects())
 //      array('subsubjs' => StudentModel::getSubSubjects()),
 //      array('activeTutors' => StudentModel::getActiveTutors())
     );
+  }
+
+  public function populateSubSubj() {
+    $this->View->renderWithoutHeaderAndFooter('student/populateSubSubj');
   }
 
   public function updateDropDowns() {

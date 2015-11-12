@@ -32,7 +32,7 @@ class AdminController extends Controller {
   }
 
   public function editDropDowns() {
-    $this->View->render('admin/editDropDowns',
+    $this->View->renderWithoutHeaderAndFooter('admin/editDropDowns',
       array('quicknotes' => AdminModel::getQuickNotes())
     );
   }

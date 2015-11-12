@@ -111,7 +111,6 @@
   </div><!-- close class="wrapper" -->
 
 <script>
-  var counterInt = 0;
   var timer = setInterval(
     function() {
 //      document.getElementById("table_holder").innerHTML = "count = " + counterInt;
