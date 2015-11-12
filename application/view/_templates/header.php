@@ -2,29 +2,19 @@
 <html>
 <head>
   <title>QSC Tutor Queue</title>
-  <!-- META -->
   <meta charset="utf-8">
   <!-- send empty favicon fallback to prevent user's browser hitting the server for lots of favicon requests resulting in 404s -->
   <link rel="icon" href="data:;base64,=">
-  <!-- CSS -->
+
   <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/style.css" />
   <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/bootstrap.min.css" />
+
+  <script src="<?php echo Config::get('URL'); ?>js/jquery-latest.min.js"></script>
+<!--  <script src="<?php echo Config::get('URL'); ?>js/jquery-1.11.3.min.js"></script> -->
   <script src="<?php echo Config::get('URL'); ?>js/bootstrap.min.js"></script>
-  <script src="<?php echo Config::get('URL'); ?>js/jquery-1.11.3.min.js"></script>
   <script src="<?php echo Config::get('URL'); ?>js/nrwb.js"></script>
 </head>
 <body>
-
-<script language="javascript" type="text/javascript">
-  $(document).ready(function() {
-    refreshTable();
-  });
-  function refreshTable() {
-    $('tableHolder').load('<?php echo Config::get('URL'); ?>student/getTable.php", function() {
-      setTimeout(refreshTable, 3000);
-    });
-  }
-</script>
 
   <!-- wrapper, to center website -->
   <div class="wrapper">

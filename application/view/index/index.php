@@ -14,7 +14,7 @@
 
      <table class="table">
 
-       <div class="tableHolder">
+       <div name="tableHolder">
          <tr><td>Empty.</td></tr>
        </div>
 
@@ -23,5 +23,4 @@
     </div>
 
   </div>
-
 </div>

@@ -83,9 +83,3 @@
 
   </div> <!-- end "box" -->
 </div> <!-- end "container" -->
-
-<script>
-function postData() {
-    $
-}
-</script>
