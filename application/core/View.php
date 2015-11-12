@@ -14,7 +14,7 @@ class View {
    * @param array $data Data to be used in the view
    */
   public function render($filename, $data = null) {
-    header('X-Frame-Options: sameorigin');
+//    header('X-Frame-Options: sameorigin');
     if ($data) {
       foreach ($data as $key => $value) {
         $this->{$key} = $value;

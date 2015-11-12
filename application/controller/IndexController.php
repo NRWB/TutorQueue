@@ -15,7 +15,10 @@ class IndexController extends Controller {
    *   when user moves to /index or enter your application at base level
    */
   public function index() {
-    $this->View->render('index/index');
+    $this->View->renderWithoutHeaderAndFooter(
+//    $this->View->render(
+      'index/index'
+    );
   }
 
   public function updateTable() {

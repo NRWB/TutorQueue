@@ -69,6 +69,16 @@ class Auth {
     }
   }
 
+  public static function checkTutorAuthentication() {
+    Session::init();
+    // self::checkSessionConcurrency();
+    if (!Session::userIsLoggedIn() || Session::get("user_account_type") < 2) {
+      Session::destroy();
+      header('location: ' . Config::get('URL') . 'login');
+      exit();
+    }
+  }
+
   public static function checkStudentAuthentication() {
     Session::init();
     // self::checkSessionConcurrency();
