@@ -14,6 +14,9 @@ class Session {
     // if no session exist, start the session
     if (session_id() == '') {
       session_start();
+      if (count(self::get('table_number')) == 0) {
+        self::add('table_number', -1);
+      }
     }
   }
 

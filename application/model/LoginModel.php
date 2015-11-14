@@ -15,6 +15,7 @@ class LoginModel {
    * @return bool success state
    */
   public static function login($user_name, $user_password, $set_remember_me_cookie = null) {
+
     // we do negative-first checks here, for simplicity empty username and empty password in one line
     if (empty($user_name) OR empty($user_password)) {
       Session::add('feedback_negative', Text::get('FEEDBACK_USERNAME_OR_PASSWORD_FIELD_EMPTY'));
@@ -178,7 +179,6 @@ class LoginModel {
 
     // if user with that id and exactly that cookie token exists in database
     if ($result) {
-
       // successfully logged in, so we write all necessary data into the session and set "user_logged_in" to true
       self::setSuccessfulLoginIntoSession($result->user_id, $result->user_name, $result->user_email, $result->user_account_type);
 
@@ -189,11 +189,11 @@ class LoginModel {
       // be invalid after a certain amount of time, so the user has to login with username/password
       // again from time to time. This is good and safe ! ;)
       Session::add('feedback_positive', Text::get('FEEDBACK_COOKIE_LOGIN_SUCCESSFUL'));
-        return true;
-      } else {
-        Session::add('feedback_negative', Text::get('FEEDBACK_COOKIE_INVALID'));
-        return false;
-      }
+      return true;
+    } else {
+      Session::add('feedback_negative', Text::get('FEEDBACK_COOKIE_INVALID'));
+      return false;
+    }
   }
 
   /**
@@ -247,39 +247,37 @@ class LoginModel {
 
   }
 
-    /**
-     * Increments the failed-login counter of a user
-     *
-     * @param $user_name
-     */
-    public static function incrementFailedLoginCounterOfUser($user_name)
-    {
-        $database = DatabaseFactory::getFactory()->getConnection();
+  /**
+   * Increments the failed-login counter of a user
+   *
+   * @param $user_name
+   */
+  public static function incrementFailedLoginCounterOfUser($user_name) {
+    $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "UPDATE users
-                   SET user_failed_logins = user_failed_logins+1, user_last_failed_login = :user_last_failed_login
-                 WHERE user_name = :user_name OR user_email = :user_name
-                 LIMIT 1";
-        $sth = $database->prepare($sql);
-        $sth->execute(array(':user_name' => $user_name, ':user_last_failed_login' => time() ));
-    }
+    $sql = "UPDATE users
+               SET user_failed_logins = user_failed_logins+1, user_last_failed_login = :user_last_failed_login
+             WHERE user_name = :user_name OR user_email = :user_name
+             LIMIT 1";
+    $sth = $database->prepare($sql);
+    $sth->execute(array(':user_name' => $user_name, ':user_last_failed_login' => time() ));
+  }
 
-    /**
-     * Resets the failed-login counter of a user back to 0
-     *
-     * @param $user_name
-     */
-    public static function resetFailedLoginCounterOfUser($user_name)
-    {
-        $database = DatabaseFactory::getFactory()->getConnection();
+  /**
+   * Resets the failed-login counter of a user back to 0
+   *
+   * @param $user_name
+   */
+  public static function resetFailedLoginCounterOfUser($user_name) {
+    $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "UPDATE users
-                   SET user_failed_logins = 0, user_last_failed_login = NULL
-                 WHERE user_name = :user_name AND user_failed_logins != 0
-                 LIMIT 1";
-        $sth = $database->prepare($sql);
-        $sth->execute(array(':user_name' => $user_name));
-    }
+    $sql = "UPDATE users
+           SET user_failed_logins = 0, user_last_failed_login = NULL
+         WHERE user_name = :user_name AND user_failed_logins != 0
+         LIMIT 1";
+    $sth = $database->prepare($sql);
+    $sth->execute(array(':user_name' => $user_name));
+  }
 
     /**
      * Write timestamp of this login into database (we only write a "real" login via login form into the database,
@@ -354,13 +352,12 @@ class LoginModel {
             Config::get('COOKIE_DOMAIN'), Config::get('COOKIE_SECURE'), Config::get('COOKIE_HTTP'));
     }
 
-    /**
-     * Returns the current state of the user's login
-     *
-     * @return bool user's login status
-     */
-    public static function isUserLoggedIn()
-    {
-        return Session::userIsLoggedIn();
-    }
+  /**
+   * Returns the current state of the user's login
+   *
+   * @return bool user's login status
+   */
+  public static function isUserLoggedIn() {
+    return Session::userIsLoggedIn();
+  }
 }

@@ -34,4 +34,22 @@ class StudentController extends Controller {
     $this->View->render('student/updateDropDowns');
   }
 
+  public function tableSetup() {
+    if (intval(Session::get('table_number')[0]) < 0) {
+      $this->View->renderWithoutHeaderAndFooter('student/TableSetup');
+    } else {
+      self::index();
+    }
+  }
+
+  public function table_setup() {
+    $verify_table_num = StudentModel::table_num_setup();
+    if ($verify_table_num) {
+      self::index();
+    } else {
+      Session::add('feedback_negative', 'please enter a different table number');
+      self::tableSetup();
+    }
+  }
+
 }

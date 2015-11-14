@@ -70,7 +70,7 @@
 
     <?php if (Session::userIsLoggedIn()) { ?>
       <div class="panel panel-header">
-        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number = <?php echo Session::get("table_number"); ?>
+        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number = <?php echo Session::get("table_number")[0]; ?>
       </div>
     <?php } ?>
 
@@ -83,7 +83,7 @@
     -->
 
     <div class="container">
-      <h1>Student View</h1>
+      <h1>Greeter [Student Setup] View</h1>
       <div class="box">
         <!-- echo out the system feedback (error and success messages) -->
         <?php $this->renderFeedbackMessages(); ?>
@@ -93,7 +93,7 @@
             <div class="col-lg-12">
               <div class="panel panel-default">
 
-                <div class="panel-heading">Create a Requests Panel</div>
+                <div class="panel-heading">Greeter Setup Device Table Number Panel</div>
 
                 <div class="row">
                   <div class="col-lg-12">
@@ -101,66 +101,38 @@
 
                       <div class="panel-body">
                         <div class="table-responsive">
+                          <form method="post" onsubmit="return verifySubmit();" autocomplete="off">
+<!--
+                          <form method="post" onsubmit="return verifySubmit();" action="<?php echo Config::get('URL'); ?>HelpRequest/create">
+-->
+                            <input type="hidden" id="hidden_val">
 
-                           <form method="post" onsubmit="return verifySubmit();" action="<?php echo Config::get('URL'); ?>HelpRequest/create">
+                            <div class="col-xs-4 col-xs-offset-4">
+                              <input type="text" class="form-control" id="input_text_field" name="" placeholder="Device table #" required>
+                            </div>
 
-                           <input type="hidden" name="hidden_tbl_num" value="<?php echo Session::get('table_number'); ?>">
+                            <!--
+                            <?php foreach (StudentModel::getSubjects() as $subj) { ?>
+                              <option value="<?= $subj->name; ?>"><?= $subj->name; ?></option>
+                            <?php } ?>
+                            -->
 
-                           <table class="table table-bordered table-hover">
+                            <br>
 
-                            <tr>
-                              <td>Subject (Required)</td>
-                              <td>
-                                <select id="subj_DD_ID" name="subj_DD" onchange="updateDD();" required>
+                            <div class="col-xs-12">
+<!--
+                              <button type="button" class="btn btn-default" title="Submit the table number for this device.">
+-->
+                              <a class="btn btn-default" href="<?php echo Config::get('URL'); ?>student/updateTableSetup" title="Submit the table number for this device.">
+                                Enter
+                              </a>
 
-                                  <option selected="selected"></option>
-
-                                  <!-- this PHP will initially populate the DropDown when the page loads. -->
-                                  <?php foreach (StudentModel::getSubjects() as $subj) { ?>
-                                    <option value="<?= $subj->name; ?>"><?= $subj->name; ?></option>
-                                  <?php } ?>
-
-                                </select>
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <td>Sub-Subject (Optional)</td>
-                              <td>
-                                <select id="sub_subj_DD">
-                                </select>
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <td>Tutor (Optional)</td>
-                              <td>
-                                <select name="req_tutor_DD">
-                                </select>
-                              </td>
-                            </tr>
-
-                            <tr align="center">
-                              <td colspan="2">
-                                <input id="student_submit" type="submit" value="submit">
-                              </td>
-                            </tr>
-
-                          </table>
+                            </div>
 
                           </form>
 
-
                         </div> <!-- End "table-responsive" -->
                       </div> <!-- End "panel-body" -->
-
-                      <div align="right">
-                        <div class="panel-body">
-                          <div class="col-xs-12">Enter Tutor Code:</div>
-                          <div class="col-xs-4 col-xs-offset-8"><input type="text" class="form-control" id="tutorcode"></div>
-                          <div class="col-xs-12"><button type="button" class="btn btn-default">Enter Tutor Portal</button></div>
-                        </div>
-                      </div>
 
                     </div> <!-- end "panel panel-default" -->
                   </div> <!-- end "col-lg-12" -->
@@ -187,45 +159,18 @@
   </div><!-- close class="wrapper" -->
 
 <script type="text/javascript">
+  function verifySubmit() {
 
-  function verifySubject() {
-    if (document.getElementById("subj_DD_ID").selectedIndex == 0) {
-      alert("Please select a valid subject.");
+    // check if number already exists in DB
+
+    var val = document.getElementById('input_text_field').value;
+    var n = parseInt(val);
+    if (n < 0) {
+      alert('no table values less than 0 accepted.');
       return false;
-    } else {
-      return true;
-    }
-  }
-
-  function updateDD() {
-
-    document.getElementById("sub_subj_DD").options.length = 0;
-
-    var doc = document.getElementById("subj_DD_ID");
-
-    var idNo = parseInt(doc.selectedIndex);
-
-    console.log(idNo);
-/**
-    var xmlhttp = new XMLHttpRequest();
-
-    var urlstr = "http://qsctutorqueue.uwb.edu/populateSubSubj.php";
-    var params = "subject=".concat(idNo);
-    xmlhttp.open("POST", urlstr, true);
-
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    xmlhttp.onreadystatechange = function () {
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        alert(xmlhttp.readyState + " " + xmlhttp.status);
-        document.getElementById("sub_subj_DD").innerHTML = xmlhttp.responseText;
-      }
     }
 
-    xmlhttp.send(params);
-
-*/
-
+    return true;
   }
 </script>
 

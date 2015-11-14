@@ -60,41 +60,85 @@
     <ul class="navigation right">
 
       <?php if (Session::userIsLoggedIn()) : ?>
-        <li <?php if (View::checkForActiveController($filename, "login")) { echo ' class="active" '; } ?> >
-          <a href="<?php echo Config::get('URL'); ?>login/logout">Logout</a>
-        </li>
-
+        <?php if (Session::get("user_account_type") != 1) : ?>
+          <li <?php if (View::checkForActiveController($filename, "login")) { echo ' class="active" '; } ?> >
+            <a href="<?php echo Config::get('URL'); ?>login/logout">Logout</a>
+          </li>
+        <?php endif; ?>
       <?php endif; ?>
     </ul>
 
     <?php if (Session::userIsLoggedIn()) { ?>
       <div class="panel panel-header">
-        Logged in as: <?php echo Session::get("user_name"); ?>
+        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number = <?php echo Session::get("table_number")[0]; ?>
       </div>
     <?php } ?>
 
+    <!--
+    =========================== End of Header ======================
+    -->
+
+    <!--
+    =========================== Start of Body ======================
+    -->
 
     <div class="container">
-      <h1>QSC Tutor Queue</h1>
+      <h1>Greeter [Student Setup] View</h1>
       <div class="box">
-
         <!-- echo out the system feedback (error and success messages) -->
         <?php $this->renderFeedbackMessages(); ?>
 
-        <div class="panel panel-default">
+        <div class="text-center">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="panel panel-default">
 
-          <!-- Default panel contents -->
-          <div class="panel-heading">
-            Tutor Help Requests Panel
-          </div>
+                <div class="panel-heading">Greeter Setup Device Table Number Panel</div>
 
-          <table id="table_holder" class="table">
-          </table>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="panel panel-default">
 
-        </div>
+                      <div class="panel-body">
+                        <div class="table-responsive">
 
-      </div>
-    </div>
+<!--
+                          <form method="post" onsubmit="return verifySubmit();" autocomplete="off" action="<?php echo Config::get('URL'); ?>student/table_setup">
+-->
+                          <form method="post" autocomplete="off" action="<?php echo Config::get('URL'); ?>student/table_setup">
+
+                            <div class="col-xs-4 col-xs-offset-4">
+                              <input type="text" class="form-control" name="input_text_field" placeholder="Enter table #" required>
+                            </div>
+
+                            <br>
+
+                            <div class="col-xs-12">
+<!--
+                              <a class="btn btn-default" title="Submit the table number for this device.">
+                                Enter
+                              </a>
+-->
+                              <input type="submit" value="Submit">
+
+                            </div>
+
+                          </form>
+
+                        </div> <!-- End "table-responsive" -->
+                      </div> <!-- End "panel-body" -->
+
+                    </div> <!-- end "panel panel-default" -->
+                  </div> <!-- end "col-lg-12" -->
+                </div> <!-- end "row" -->
+
+              </div> <!-- end "panel panel-default" -->
+            </div> <!-- end "col-lg-12" -->
+          </div> <!-- end "row" -->
+        </div> <!-- end "text-center" -->
+
+      </div> <!-- end "box" -->
+    </div> <!-- end "container" -->
 
     <div class="container">
       <p style="display: block; font-size: 11px; color: #999;">
@@ -108,12 +152,19 @@
 
   </div><!-- close class="wrapper" -->
 
-  <script>
-    var timer = setInterval(
-      function() {
-        $('#table_holder').load('<?php echo config::get('URL'); ?>index/updateTable');
-      }, 2500);
-  </script>
+<script type="text/javascript">
+  function verifySubmit() {
+    // check if number already exists in DB
+    var val = document.getElementById('input_text_field').value;
+    var n = parseInt(val);
+    if (n < 0) {
+      alert('no table values less than 0 accepted.');
+      return false;
+    }
+
+    return true;
+  }
+</script>
 
 </body>
 </html>
