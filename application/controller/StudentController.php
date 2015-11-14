@@ -34,14 +34,4 @@ class StudentController extends Controller {
     $this->View->render('student/updateDropDowns');
   }
 
-  public function addRequest() {
-    StudentModel::addRequestToQueue(
-      // The form id information that is submitted to the database.
-      Request::post('subjectDropDownID'),
-      Request::post('subSubjectDropDownID'),
-      Request::post('requestedTutorID')
-    );
-    Redirect::to("student/index");
-  }
-
 }

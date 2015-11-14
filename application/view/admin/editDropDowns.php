@@ -83,6 +83,8 @@
 
 <!--
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content:
+ http://bootsnipp.com/snippets/featured/collapsible-panel
+ http://www.xul.fr/ajax/dynamic-select.php
 -->
 
 <div class="container">

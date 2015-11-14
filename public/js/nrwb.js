@@ -1,3 +1,4 @@
+/**
 function selectSS() {
   var doc = document.getElementById("subjectDropDownID");
   var idNo = parseInt(doc.options[doc.selectedIndex].value);
@@ -35,8 +36,4 @@ function postRequest() {
     xmlhttp.send();
   }
 }
-
-function testFoo() {
-  document.getElementById("idid").innerHTML = "hi";
-}
-
+*/

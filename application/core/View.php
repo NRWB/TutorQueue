@@ -34,7 +34,7 @@ class View {
    */
   public function renderMulti($filenames, $data = null) {
     if (!is_array($filenames)) {
-      self::render($filenames, $data); 
+      self::render($filenames, $data);
       return false;
     }
     if ($data) {

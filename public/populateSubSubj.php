@@ -1,14 +1,15 @@
-<html>
-<body>
+
 
 <?php
-  $c = $_GET['c'];
+  $c = $_POST['subject'];
   $database = DatabaseFactory::getFactory()->getConnection();
-  $sql = "SELECT * FROM qscSubjects.tblTutorSubSubjects WHERE id = '".$c."'";
-  $query = $database->prepare($sql);
-  $query->execute();
-  echo $query->rowCount();
+  $sql = "SELECT * FROM qscSubjects.tblTutorSubSubjects WHERE id = ".$c;
+  $results = $query->query($sql);
+
+  foreach ($results as $row) {
+    echo "<option>"
+    echo $row->["exactName"];
+    echo "</option>"
+  }
 ?>
 
-</body>
-</html>

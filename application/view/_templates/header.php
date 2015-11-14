@@ -12,7 +12,6 @@
   <script src="<?php echo Config::get('URL'); ?>js/jquery-latest.min.js"></script>
 <!--  <script src="<?php echo Config::get('URL'); ?>js/jquery-1.11.3.min.js"></script> -->
   <script src="<?php echo Config::get('URL'); ?>js/bootstrap.min.js"></script>
-  <script src="<?php echo Config::get('URL'); ?>js/nrwb.js"></script>
 </head>
 <body>
 

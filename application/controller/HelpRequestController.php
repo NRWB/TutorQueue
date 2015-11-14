@@ -8,12 +8,16 @@ class HelpRequestController extends Controller {
   }
 
   public function create() {
+/*
     HelpRequestModel::createHelpRequest(
       Request::post('subj_DD'),
       Request::post('sub_subj_DD'),
       Request::post('req_tutor_DD')
     );
-    $this->View->render('student/RequestRedirect');
+*/
+    if (HelpRequestModel::createHelpRequest(Request::post('subj_DD'), Request::post('sub_subj_DD'), Request::post('req_tutor_DD'))) {
+      $this->View->render('student/RequestRedirect');
+    }
     Redirect::toDelay('student', '3');
   }
 }

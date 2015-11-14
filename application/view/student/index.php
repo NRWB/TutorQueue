@@ -73,124 +73,156 @@
       </div>
     <?php } ?>
 
+    <!--
+    =========================== End of Header ======================
+    -->
 
-<div class="container">
-  <h1>Student View</h1>
-  <div class="box">
-    <!-- echo out the system feedback (error and success messages) -->
-    <?php $this->renderFeedbackMessages(); ?>
+    <!--
+    =========================== Start of Body ======================
+    -->
 
-    <div class="text-center">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="panel panel-default">
+    <div class="container">
+      <h1>Student View</h1>
+      <div class="box">
+        <!-- echo out the system feedback (error and success messages) -->
+        <?php $this->renderFeedbackMessages(); ?>
 
-            <div class="panel-heading">Create a Requests Panel</div>
+        <div class="text-center">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="panel panel-default">
 
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="panel panel-default">
+                <div class="panel-heading">Create a Requests Panel</div>
 
-                  <div class="panel-body">
-                    <div class="table-responsive">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="panel panel-default">
 
-                       <form method="post" action="<?php echo Config::get('URL');?>HelpRequest/create">
+                      <div class="panel-body">
+                        <div class="table-responsive">
 
-                       <table class="table table-bordered table-hover">
+                           <form method="post" onsubmit="return verifySubmit();" action="<?php echo Config::get('URL'); ?>HelpRequest/create">
 
-                        <tr>
-                          <td>Subject (Required)</td>
-                          <td>
-                            <select id="subj_DD" onchange="javascript: updateDD();">
-                              <!-- this PHP will initially populate the DropDown when the page loads. -->
-                              <?php foreach (StudentModel::getSubjects() as $subj) { ?>
-                                <option value="<?= $subj->name; ?>"><?= $subj->name; ?></option>
-                              <?php } ?>
-                            </select>
-                          </td>
-                        </tr>
+                           <table class="table table-bordered table-hover">
 
-                        <tr>
-                          <td>Sub-Subject (Optional)</td>
-                          <td>
-                            <select id="sub_subj_DD">
-                            </select>
-                          </td>
-                        </tr>
+                            <tr>
+                              <td>Subject (Required)</td>
+                              <td>
+                                <select id="subj_DD_ID" name="subj_DD" onchange="updateDD();" required>
 
-                        <tr>
-                          <td>Tutor (Optional)</td>
-                          <td>
-                            <select name="req_tutor_DD">
-                            </select>
-                          </td>
-                        </tr>
+                                  <option selected="selected"></option>
 
-                        <tr align="center">
-                          <td colspan="2">
-                            <input id="student_submit" type="submit" value="submit">
-                          </td>
-                        </tr>
+                                  <!-- this PHP will initially populate the DropDown when the page loads. -->
+                                  <?php foreach (StudentModel::getSubjects() as $subj) { ?>
+                                    <option value="<?= $subj->name; ?>"><?= $subj->name; ?></option>
+                                  <?php } ?>
 
-                      </table>
+                                </select>
+                              </td>
+                            </tr>
 
-                      </form>
+                            <tr>
+                              <td>Sub-Subject (Optional)</td>
+                              <td>
+                                <select id="sub_subj_DD">
+                                </select>
+                              </td>
+                            </tr>
 
-                    </div> <!-- End "table-responsive" -->
-                  </div> <!-- End "panel-body" -->
+                            <tr>
+                              <td>Tutor (Optional)</td>
+                              <td>
+                                <select name="req_tutor_DD">
+                                </select>
+                              </td>
+                            </tr>
 
-                  <div align="right">
-                    <div class="panel-body">
-                      <div class="col-xs-12">Enter Tutor Code:</div>
-                      <div class="col-xs-4 col-xs-offset-8"><input type="text" class="form-control" id="tutorcode"></div>
-                      <div class="col-xs-12"><button type="button" class="btn btn-default">Enter Tutor Portal</button></div>
-                    </div>
-                  </div>
+                            <tr align="center">
+                              <td colspan="2">
+                                <input id="student_submit" type="submit" value="submit">
+                              </td>
+                            </tr>
 
-                </div> <!-- end "panel panel-default" -->
-              </div> <!-- end "col-lg-12" -->
-            </div> <!-- end "row" -->
+                          </table>
 
-          </div> <!-- end "panel panel-default" -->
-        </div> <!-- end "col-lg-12" -->
-      </div> <!-- end "row" -->
-    </div> <!-- end "text-center" -->
+                          </form>
 
 
-  </div> <!-- end "box" -->
-</div> <!-- end "container" -->
+                        </div> <!-- End "table-responsive" -->
+                      </div> <!-- End "panel-body" -->
 
-  <div class="container">
-    <p style="display: block; font-size: 11px; color: #999;">
-      <div class="footer" align="center">
-        <a href="http://www.washington.edu/"><img src="https://www.washington.edu/home/graphics/blockw.gif" width="53" height="37" alt="UW Logo"></a>
-        <br>
-        <a href="http://www.bothell.washington.edu/qsc">Contact QSC</a>
-      </div>
-    </p>
-  </div>
+                      <div align="right">
+                        <div class="panel-body">
+                          <div class="col-xs-12">Enter Tutor Code:</div>
+                          <div class="col-xs-4 col-xs-offset-8"><input type="text" class="form-control" id="tutorcode"></div>
+                          <div class="col-xs-12"><button type="button" class="btn btn-default">Enter Tutor Portal</button></div>
+                        </div>
+                      </div>
+
+                    </div> <!-- end "panel panel-default" -->
+                  </div> <!-- end "col-lg-12" -->
+                </div> <!-- end "row" -->
+
+              </div> <!-- end "panel panel-default" -->
+            </div> <!-- end "col-lg-12" -->
+          </div> <!-- end "row" -->
+        </div> <!-- end "text-center" -->
+
+      </div> <!-- end "box" -->
+    </div> <!-- end "container" -->
+
+    <div class="container">
+      <p style="display: block; font-size: 11px; color: #999;">
+        <div class="footer" align="center">
+          <a href="http://www.washington.edu/"><img src="https://www.washington.edu/home/graphics/blockw.gif" width="53" height="37" alt="UW Logo"></a>
+          <br>
+          <a href="http://www.bothell.washington.edu/qsc">Contact QSC</a>
+        </div>
+      </p>
+    </div>
 
   </div><!-- close class="wrapper" -->
 
 <script type="text/javascript">
-  function updateDD() {
-    if (window.XMLHttpRequest) {
-      xmlhttp = new XMLHttpRequest();
+
+  function verifySubject() {
+    if (document.getElementById("subj_DD_ID").selectedIndex == 0) {
+      alert("Please select a valid subject.");
+      return false;
     } else {
-      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      return true;
     }
-    xmlhttp.onreadystatechange = function() {
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        document.getElementById("sub_subj_DD").innerHTML = xmlhttp.responseText;
-      }
-    };
+  }
+
+  function updateDD() {
 
     document.getElementById("sub_subj_DD").options.length = 0;
-    var doc = document.getElementById("subj_DD");
-    var idNo = parseInt(doc.options[doc.selectedIndex].value);
 
-    xmlhttp.open("GET", "populateSubSubj.php?subject="+idNo, true);
-    xmlhttp.send();
+    var doc = document.getElementById("subj_DD_ID");
+
+    var idNo = parseInt(doc.selectedIndex);
+
+    console.log(idNo);
+/**
+    var xmlhttp = new XMLHttpRequest();
+
+    var urlstr = "http://qsctutorqueue.uwb.edu/populateSubSubj.php";
+    var params = "subject=".concat(idNo);
+    xmlhttp.open("POST", urlstr, true);
+
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    xmlhttp.onreadystatechange = function () {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        alert(xmlhttp.readyState + " " + xmlhttp.status);
+        document.getElementById("sub_subj_DD").innerHTML = xmlhttp.responseText;
+      }
+    }
+
+    xmlhttp.send(params);
+
+*/
+
   }
 </script>
 
@@ -199,8 +231,6 @@
       var opt = document.createElement("option");
       document.getElementById("sub_subj_DD").appendChild(opt);
     <?php } ?>
-  }
-</script>
 -->
 
 </body>
