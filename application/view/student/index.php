@@ -111,7 +111,7 @@
                             <tr>
                               <td>Subject (Required)</td>
                               <td>
-                                <select id="subj_DD_ID" name="subj_DD" onchange="updateDD();" required>
+                                <select id="subj_DD_ID" name="subj_DD" required>
 
                                   <option selected="selected"></option>
 
@@ -127,7 +127,8 @@
                             <tr>
                               <td>Sub-Subject (Optional)</td>
                               <td>
-                                <select id="sub_subj_DD">
+                                <select id="sub_subj_DD_ID" name="sub_subj_DD">
+                                  <option selected="selected"></option>
                                 </select>
                               </td>
                             </tr>
@@ -135,7 +136,8 @@
                             <tr>
                               <td>Tutor (Optional)</td>
                               <td>
-                                <select name="req_tutor_DD">
+                                <select id="req_tutor_DD_ID" name="req_tutor_DD">
+                                  <option selected="selected"></option>
                                 </select>
                               </td>
                             </tr>
@@ -206,26 +208,6 @@
     var idNo = parseInt(doc.selectedIndex);
 
     console.log(idNo);
-/**
-    var xmlhttp = new XMLHttpRequest();
-
-    var urlstr = "http://qsctutorqueue.uwb.edu/populateSubSubj.php";
-    var params = "subject=".concat(idNo);
-    xmlhttp.open("POST", urlstr, true);
-
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    xmlhttp.onreadystatechange = function () {
-      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        alert(xmlhttp.readyState + " " + xmlhttp.status);
-        document.getElementById("sub_subj_DD").innerHTML = xmlhttp.responseText;
-      }
-    }
-
-    xmlhttp.send(params);
-
-*/
-
   }
 </script>
 

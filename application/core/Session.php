@@ -60,6 +60,14 @@ class Session {
    * deletes the session (= logs the user out)
    */
   public static function destroy() {
+    $db = DatabaseFactory::getFactory()->getConnection();
+    $sql = "DELETE FROM qscDeviceTables.tblDevices WHERE tblDevices.number = :tbl_num_removed";
+    $query = $db->prepare($sql);
+    $query->execute(
+      array(
+        ':tbl_num_removed' => Session::get('table_number')
+      )
+    );
     session_destroy();
   }
 
