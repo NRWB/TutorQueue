@@ -128,7 +128,13 @@
                               <td>Sub-Subject (Optional)</td>
                               <td>
                                 <select id="sub_subj_DD_ID" name="sub_subj_DD">
+
                                   <option selected="selected"></option>
+
+                                  <?php foreach (StudentModel::getSubSubjectsAll() as $subj) { ?>
+                                    <option value="<?= $subj->exactName; ?>"><?= $subj->exactName; ?></option>
+                                  <?php } ?>
+
                                 </select>
                               </td>
                             </tr>
@@ -137,7 +143,13 @@
                               <td>Tutor (Optional)</td>
                               <td>
                                 <select id="req_tutor_DD_ID" name="req_tutor_DD">
+
                                   <option selected="selected"></option>
+
+                                  <?php foreach (StudentModel::getTutors() as $tut) { ?>
+                                    <option value="<?= $tut->name; ?>"><?= $tut->name; ?></option>
+                                  <?php } ?>
+
                                 </select>
                               </td>
                             </tr>
@@ -208,7 +220,25 @@
     var idNo = parseInt(doc.selectedIndex);
 
     console.log(idNo);
+
   }
+
+  $('select.subj_DD_ID').change(function () {
+
+    url: 'http://qsctutorqueue.uwb.edu/populateSubSubj.php',
+    type: 'GET',
+    data: {
+      subject_id: parseInt(document.getElementById("subj_DD_ID").selectedIndex);
+    }
+    success: function(response) {
+      console.log(response);
+    }
+    error: function(errText) {
+      alert(errText);
+    }
+
+  });
+
 </script>
 
 <!--

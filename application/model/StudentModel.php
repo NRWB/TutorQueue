@@ -23,7 +23,10 @@ class StudentModel {
     return $query->fetchAll();
   }
 
-  public static function getActiveTutors() {
+  public static function getTutors() {
+    $database = DatabaseFactory::getFactory()->getConnection();
+    $query = $database->query("SELECT * FROM qscTutorList.tblAllTutors");
+    return $query->fetchAll();
   }
 
   public static function table_num_setup() {
