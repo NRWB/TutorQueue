@@ -212,41 +212,13 @@
   }
 
   function updateDD() {
-
     document.getElementById("sub_subj_DD").options.length = 0;
-
     var doc = document.getElementById("subj_DD_ID");
-
     var idNo = parseInt(doc.selectedIndex);
-
     console.log(idNo);
-
   }
 
-  $('select.subj_DD_ID').change(function () {
-
-    url: 'http://qsctutorqueue.uwb.edu/populateSubSubj.php',
-    type: 'GET',
-    data: {
-      subject_id: parseInt(document.getElementById("subj_DD_ID").selectedIndex);
-    }
-    success: function(response) {
-      console.log(response);
-    }
-    error: function(errText) {
-      alert(errText);
-    }
-
-  });
-
 </script>
-
-<!--
-    <?php foreach (StudentModel::getSubSubjects($idNo) as $ss) { ?>
-      var opt = document.createElement("option");
-      document.getElementById("sub_subj_DD").appendChild(opt);
-    <?php } ?>
--->
 
 </body>
 </html>
