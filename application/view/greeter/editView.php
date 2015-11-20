@@ -93,16 +93,8 @@
 
         </div>
 
-        <form action="<?php echo config::get('URL'); ?>student/index">
-          <p>
-            <input id="" name="" type="submit" value="Add/Remove an entry">
-          </p>
-        </form>
-
-        <form action="<?php echo config::get('URL'); ?>greeter/editView">
-          <p>
-            <input id="" name="" type="submit" value="Edit existing entry">
-          </p>
+        <form action="<?php echo config::get('URL'); ?>greeter/index">
+          <input id="" name="" type="submit" value="Save Checked/Selected">
         </form>
 
       </div>
@@ -122,10 +114,7 @@
 
   <script>
 
-    var timer = setInterval(
-      function() {
-        $('#table_holder').load('<?php echo config::get('URL'); ?>greeter/updateTable');
-      }, 500);
+    var timer = $('#table_holder').load('<?php echo config::get('URL'); ?>greeter/updateTable2');
 
   </script>
 

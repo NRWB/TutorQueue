@@ -75,7 +75,7 @@
 
 
     <div class="container">
-      <h1>Greeter View</h1>
+      <h1>Tutor View</h1>
       <div class="box">
 
         <!-- echo out the system feedback (error and success messages) -->
@@ -85,25 +85,59 @@
 
           <!-- Default panel contents -->
           <div class="panel-heading">
-            Greeter Panel
+            Tutor Panel
           </div>
 
-          <table id="table_holder" class="table">
-          </table>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="table-responsive">
+
+                    <form method="post" onsubmit="alert('ty 4 submit');'" action="">
+
+                      <table id="table_holder" class="table table-bordered table-hover">
+                      </table>
+
+                    </form>
+
+                  </div> <!-- End "table-responsive" -->
+                </div> <!-- End "panel-body" -->
+
+                <div align="left">
+                  <div class="panel-body">
+
+                    <a href="#" class="btn btn-default" role="button">
+                      Add Student to Queue
+                    </a>
+
+                  </div>
+                </div>
+
+                <div align="right">
+                  <div class="panel-body">
+
+                    <div class="col-xs-12">
+                      Return to student view
+                    </div>
+
+                    <div class="col-xs-12">
+                      (will time out after 30 seconds)
+                    </div>
+
+                    <div class="col-xs-12">
+                      <a href="<?php echo Config::get('URL'); ?>tutor/leaveHelpPanel" class="btn btn-default" role="button">
+                        Leave Tutor View
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+              </div> <!-- end "panel panel-default" -->
+            </div> <!-- end "col-lg-12" -->
+          </div> <!-- end "row" -->
 
         </div>
-
-        <form action="<?php echo config::get('URL'); ?>student/index">
-          <p>
-            <input id="" name="" type="submit" value="Add/Remove an entry">
-          </p>
-        </form>
-
-        <form action="<?php echo config::get('URL'); ?>greeter/editView">
-          <p>
-            <input id="" name="" type="submit" value="Edit existing entry">
-          </p>
-        </form>
 
       </div>
     </div>
@@ -120,14 +154,9 @@
 
   </div><!-- close class="wrapper" -->
 
-  <script>
-
-    var timer = setInterval(
-      function() {
-        $('#table_holder').load('<?php echo config::get('URL'); ?>greeter/updateTable');
-      }, 500);
-
-  </script>
+<script>
+  $('#table_holder').load('<?php echo config::get('URL'); ?>tutor/updateTableTutors');
+</script>
 
 </body>
 </html>

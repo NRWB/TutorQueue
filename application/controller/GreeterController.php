@@ -18,7 +18,19 @@ class GreeterController extends Controller {
    * This method controls what happens when you move to /admin or /admin/index in your app.
    */
   public function index() {
-    $this->View->render('greeter/index');
+    $this->View->renderWithoutHeaderAndFooter('greeter/index');
+  }
+
+  public function updateTable() {
+    $this->View->renderWithoutHeaderAndFooter('greeter/updateTable');
+  }
+
+  public function updateTable2() {
+    $this->View->renderWithoutHeaderAndFooter('greeter/updateTable2');
+  }
+
+  public function editView() {
+    $this->View->renderWithoutHeaderAndFooter('greeter/editView');
   }
 
  // EDIT for use in the editing of REQUESTS in the tutor queue.

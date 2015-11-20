@@ -31,6 +31,9 @@
           <li <?php if (View::checkForActiveController($filename, "greeter")) { echo ' class="active" '; } ?> >
             <a href="<?php echo Config::get('URL'); ?>greeter/index">Greeter Home</a>
           </li>
+          <li <?php if (View::checkForActiveController($filename, "tutor")) { echo ' class="active" '; } ?> >
+            <a href="<?php echo Config::get('URL'); ?>tutor/index">Tutor Home</a>
+          </li>
           <li <?php if (View::checkForActiveController($filename, "student")) { echo ' class="active" '; } ?> >
             <a href="<?php echo Config::get('URL'); ?>student/index">Student Home</a>
           </li>

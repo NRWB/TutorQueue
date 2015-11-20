@@ -111,7 +111,7 @@
                             <tr>
                               <td>Subject (Required)</td>
                               <td>
-                                <select id="subj_DD_ID" name="subj_DD" required>
+                                <select id="subj_DD_ID" name="subj_DD" onchange="updateDD();" required>
 
                                   <option selected="selected"></option>
 
@@ -170,9 +170,23 @@
 
                       <div align="right">
                         <div class="panel-body">
-                          <div class="col-xs-12">Enter Tutor Code:</div>
-                          <div class="col-xs-4 col-xs-offset-8"><input type="text" class="form-control" id="tutorcode"></div>
-                          <div class="col-xs-12"><button type="button" class="btn btn-default">Enter Tutor Portal</button></div>
+
+                          <div class="col-xs-12">
+                            Enter Tutor Code:
+                          </div>
+
+                          <form method="post" action="<?php echo Config::get('URL'); ?>tutor/helpPanel">
+
+                            <div class="col-xs-4 col-xs-offset-8">
+                              <input type="text" class="form-control" name="input_tutor_text_code" id="tutorcode" autocomplete="off">
+                            </div>
+
+                            <div class="col-xs-12">
+                              <input type="submit" class="btn btn-default" value="Enter Tutor Portal">
+                            </div>
+
+                          </form>
+
                         </div>
                       </div>
 
@@ -202,6 +216,8 @@
 
 <script type="text/javascript">
 
+  var opts = $('#sub_subj_DD_ID').html();
+
   function verifySubject() {
     if (document.getElementById("subj_DD_ID").selectedIndex == 0) {
       alert("Please select a valid subject.");
@@ -212,10 +228,31 @@
   }
 
   function updateDD() {
-    document.getElementById("sub_subj_DD").options.length = 0;
+    document.getElementById("sub_subj_DD_ID").options.length = 0;
     var doc = document.getElementById("subj_DD_ID");
     var idNo = parseInt(doc.selectedIndex);
+    console.log('----------');
     console.log(idNo);
+    // console.log(opts.toString().split("\n"));
+    // http://stackoverflow.com/questions/17779744/regular-expression-to-get-a-string-between-parentheses-in-javascript
+    var regExp = /\(([^)]+)\)/;
+    var matches = regExp.exec(doc.options[doc.selectedIndex].value);
+    var preBit = matches[0];
+    preBit = preBit.slice(1);
+    preBit = preBit.substring(0, preBit.length - 1);
+    elearr = [];
+    elearr.push("<option selected='selected'></option>");
+    opts.toString().split("\n").forEach(function(ele) {
+      // console.log('ele = ' + ele);
+      if (ele.indexOf('option') > -1) {
+        if (ele.indexOf(preBit) > -1) {
+//          console.log('inner hit');
+          elearr.push(ele);
+        }
+      }
+    });
+    console.log(elearr.length);
+    document.getElementById("sub_subj_DD_ID").innerHTML = elearr;
   }
 
 </script>

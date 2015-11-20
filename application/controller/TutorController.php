@@ -14,11 +14,31 @@ class TutorController extends Controller {
     Auth::checkTutorAuthentication();
   }
 
+  public function index() {
+    $this->View->renderWithoutHeaderAndFooter('tutor/index');
+  }
+
   /**
    * This method controls what happens when you move to /tutor or /admin/index in your app.
    */
   public function helpPanel() {
-    $this->View->render('tutor/panel');
+    if (TutorModel::confirmTutorCode()) {
+      self::index();
+//      Redirect::to('tutor/index');
+    } else {
+//      self::index();
+//      $this->View->renderWithoutHeaderAndFooter('student/index');
+      Redirect::to('student/index');
+    }
+  }
+
+  public function leaveHelpPanel() {
+    TutorModel::logoutTimeoutTutor();
+    $this->View->renderWithoutHeaderAndFooter('student/index');
+  }
+
+  public function updateTableTutors() {
+    $this->View->renderWithoutHeaderAndFooter('tutor/updateTableTutors');
   }
 
 }
