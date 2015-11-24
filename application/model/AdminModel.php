@@ -1,7 +1,8 @@
 <?php
 
 /**
- * Handles all data manipulation of the admin part
+ * The AdminModel class
+ * Handles all data manipulation of the admin part.
  */
 class AdminModel {
 

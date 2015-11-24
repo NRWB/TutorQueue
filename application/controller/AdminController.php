@@ -1,50 +1,76 @@
 <?php
 
+/**
+ * The admin controller class
+ */
 class AdminController extends Controller {
 
   /**
-   * Construct this object by extending the basic Controller class
+   * Constructs AdminController object by extending the basic Controller class.
+   * Checks for the proper admin authentication for entire controller.
+   * All methods inside this controller are only accessible for admin users (users of role type/level 7).
    */
   public function __construct() {
     parent::__construct();
-    // special authentication check for the entire controller:
-    //   Note the check-ADMIN-authentication!
-    // All methods inside this controller are only
-    //   accessible for admins (= users that have role type 7)
     Auth::checkAdminAuthentication();
   }
 
   /**
-   * This method controls what happens when you move to /admin or /admin/index in your app.
+   * The index method
+   * If moved to /admin or /admin/index, will render following view.
    */
   public function index() {
     $this->View->render('admin/index');
   }
 
+  /**
+   * The panel method
+   * If moved to /admin/panel, will render following view.
+   */
   public function panel() {
     $this->View->renderWithoutHeaderAndFooter('admin/panel');
   }
 
+  /**
+   * The editAccounts method
+   * If moved to /admin/editAccounts, will render following view.
+   */
   public function editAccounts() {
     $this->View->render('admin/editAccounts',
       array('users' => UserModel::getPublicProfilesOfAllUsers())
     );
   }
 
+  /**
+   * The editDropDowns method
+   * If moved to /admin/editDropDowns, will render following view.
+   */
   public function editDropDowns() {
     $this->View->renderWithoutHeaderAndFooter('admin/editDropDowns',
       array('quicknotes' => AdminModel::getQuickNotes())
     );
   }
 
+  /**
+   * The uploadSchedule method
+   * If moved to /admin/uploadSchedule, will render following view.
+   */
   public function uploadSchedule() {
     $this->View->render('admin/uploadSchedule');
   }
 
+  /**
+   * The dataDump method
+   * If moved to /admin/dataDump, will render following view.
+   */
   public function dataDump() {
     $this->View->render('admin/dataDump');
   }
 
+  /**
+   * The actionAccountSettings method
+   * Posts info from user to delete a specific user.
+   */
   public function actionAccountSettings() {
     AdminModel::setAccountDeletionStatus(
       Request::post('softDelete'),

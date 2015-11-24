@@ -107,7 +107,7 @@
                 <div align="left">
                   <div class="panel-body">
 
-                    <a href="#" class="btn btn-default" role="button">
+                    <a id="add_student" href="#" class="btn btn-default" role="button" onclick="alert('hi');">
                       Add Student to Queue
                     </a>
 
@@ -156,6 +156,7 @@
 
 <script>
   $('#table_holder').load('<?php echo config::get('URL'); ?>tutor/updateTableTutors');
+  
 </script>
 
 </body>

@@ -26,6 +26,11 @@ class StudentController extends Controller {
     );
   }
 
+
+  /**
+   function name: 
+   description: 
+  */
   public function populateSubSubj() {
     $this->View->renderWithoutHeaderAndFooter('student/populateSubSubj');
   }

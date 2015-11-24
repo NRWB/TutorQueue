@@ -58,45 +58,12 @@ class TutorModel {
     } else {
       return false;
     }
-// For the issue of double logging,
-// http://superuser.com/questions/608231/php-is-it-possible-to-allow-login-to-multiple-account-of-same-site-from-same-br
-/**
-      $db = DatabaseFactory::getFactory()->getConnection();
-      $qr = $db->prepare("UPDATE huge.users SET user_account_type = 2 WHERE users.user_name = :the_user_name");
-      $qr->execute(
-        array(
-          ':the_user_name' => Session::get("user_name")
-        )
-      );
-*/
-
-      // logs out of student,
-      // logs into tutor
-//      LoginModel::logout();
-      // perform the login method, put result (true or false) into $login_successful
-//      $login_successful = LoginModel::login(
-//        'tutortest', 'system', ''
-//      );
-
-//      return true;
-//    } else {
-//      return false;
-//    }
   }
 
   public static function logoutTimeoutTutor() {
-/**
-    $db = DatabaseFactory::getFactory()->getConnection();
-    $qr = $db->prepare("UPDATE huge.users SET user_account_type = 1 WHERE users.user_name = :the_user_name");
-    $qr->execute(
-      array(
-        ':the_user_name' => Session::get("user_name")
-      )
-    );
-*/
     LoginModel::logout();
     $login_successful = LoginModel::login(
-      'studenttest','system', ''
+      'studenttest', 'system', ''
     );
   }
 

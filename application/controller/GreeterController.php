@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * The GreeterController class
+ */
 class GreeterController extends Controller {
 
   /**
