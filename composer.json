@@ -3,7 +3,7 @@
     "type": "project",
     "description": "Initially, UWB CSS Capstone project. Designed to service students with tutor assistance.",
     "homepage": "https://github.com/nrwb/TutorQueue",
-    "license": "MIT",
+    "license": "GPL-3.0+",
     "require-dev": {
         "php": ">=5.5.0",
         "phpmailer/phpmailer": "~5.2",
