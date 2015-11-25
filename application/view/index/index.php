@@ -56,23 +56,11 @@
 
     </ul>
 
-    <!-- my account -->
-    <ul class="navigation right">
-
-      <?php if (Session::userIsLoggedIn()) : ?>
-        <li <?php if (View::checkForActiveController($filename, "login")) { echo ' class="active" '; } ?> >
-          <a href="<?php echo Config::get('URL'); ?>login/logout">Logout</a>
-        </li>
-
-      <?php endif; ?>
-    </ul>
-
     <?php if (Session::userIsLoggedIn()) { ?>
       <div class="panel panel-header">
-        Logged in as: <?php echo Session::get("user_name"); ?>
+        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number = <?php echo Session::get("table_number"); ?>
       </div>
     <?php } ?>
-
 
     <div class="container">
       <h1>QSC Tutor Queue</h1>
@@ -93,7 +81,29 @@
 
         </div>
 
-        Btn here
+        <div class="panel-body">
+
+          <form method="post" action="<?php echo Config::get('URL'); ?>student/index">
+            <div class="col-xs-6">
+              <input type="submit" class="btn btn-default" value="Request Help">
+            </div>
+          </form>
+
+          <div class="col-xs-6 text-right">
+            Enter Tutor Code:
+          </div>
+
+          <form method="post" action="<?php echo Config::get('URL'); ?>tutor/helpPanel">
+            <!-- <div class="col-xs-4 col-xs-offset-8"> -->
+            <div class="col-xs-2 col-xs-offset-10 text-right">
+              <input type="text" class="form-control" name="input_tutor_text_code" id="tutorcode" autocomplete="off">
+            </div>
+            <div class="col-xs-12 text-right">
+              <input type="submit" class="btn btn-default" value="Enter Tutor Portal">
+            </div>
+          </form>
+
+        </div>
 
       </div>
     </div>

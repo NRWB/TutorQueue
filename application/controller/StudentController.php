@@ -50,7 +50,8 @@ class StudentController extends Controller {
   public function table_setup() {
     $verify_table_num = StudentModel::table_num_setup();
     if ($verify_table_num) {
-      self::index();
+//      self::index();
+      Redirect::to('index/index');
     } else {
       Session::add('feedback_negative', 'please enter a different table number');
       self::tableSetup();

@@ -43,7 +43,11 @@
         <?php endif; ?>
 
         <!-- Students -->
-        <!-- Should not have header shown as students stay on one page and do not need to log in or out -->
+        <?php if (Session::get("user_account_type") == 1) : ?>
+          <li <?php if (View::checkForActiveController($filename, "student")) { echo ' class="active" '; } ?> >
+            <a href="<?php echo Config::get('URL'); ?>index/index">Index Home</a>
+          </li>
+        <?php endif; ?>
 
       <?php } else { ?>
 
@@ -167,28 +171,6 @@
 
                         </div> <!-- End "table-responsive" -->
                       </div> <!-- End "panel-body" -->
-
-                      <div align="right">
-                        <div class="panel-body">
-
-                          <div class="col-xs-12">
-                            Enter Tutor Code:
-                          </div>
-
-                          <form method="post" action="<?php echo Config::get('URL'); ?>tutor/helpPanel">
-
-                            <div class="col-xs-4 col-xs-offset-8">
-                              <input type="text" class="form-control" name="input_tutor_text_code" id="tutorcode" autocomplete="off">
-                            </div>
-
-                            <div class="col-xs-12">
-                              <input type="submit" class="btn btn-default" value="Enter Tutor Portal">
-                            </div>
-
-                          </form>
-
-                        </div>
-                      </div>
 
                     </div> <!-- end "panel panel-default" -->
                   </div> <!-- end "col-lg-12" -->

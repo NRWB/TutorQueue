@@ -27,7 +27,7 @@
               window.location.replace("<?php echo Config::get('URL'); ?>student/tableSetup");
               console.log('error, no table number setup, going to redirect to setup a table number for the stuent session');
             } else {
-              window.location.replace("<?php echo Config::get('URL'); ?>student/index");
+              window.location.replace("<?php echo Config::get('URL'); ?>index/index");
               console.log('success, there is already a table number setup.');
             }
             break;

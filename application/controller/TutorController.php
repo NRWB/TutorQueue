@@ -34,7 +34,7 @@ class TutorController extends Controller {
 
   public function leaveHelpPanel() {
     TutorModel::logoutTimeoutTutor();
-    $this->View->renderWithoutHeaderAndFooter('student/index');
+      Redirect::to('index/index');
   }
 
   public function updateTableTutors() {
