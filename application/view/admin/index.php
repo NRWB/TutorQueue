@@ -8,6 +8,7 @@
       <h3><a href="dataDump">Data Dump (Download the Database)</a></h3>
       <h3><a href="editDropDowns">Edit Drop-Down Menus</a></h3>
       <h3><a href="uploadSchedule">Upload Tutor Shift Schedule</a></h3>
+      <h3><a href="editPageTimeouts">Edit Page Timeouts</a></h3>
 
   </div>
 </div>

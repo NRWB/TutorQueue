@@ -44,6 +44,7 @@ class StudentModel {
         return false;
       }
       Session::set('table_number', $n);
+//      apc_store('table_number', $n);
 /**
       $m = session_id();
       $database->query("INSERT INTO qscDeviceTables.tblDevices (id, number) VALUES (".$m.", ".$n.")";
@@ -52,6 +53,12 @@ class StudentModel {
       return true;
     } else {
       // failure, table number exists!
+
+//      $exists_already = apc_fetch('table_number');
+//      if ($exists_already) {
+//        Session::set('table_number');
+//        return true;
+//      }
       return false;
     }
   }

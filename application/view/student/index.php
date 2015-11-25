@@ -108,7 +108,7 @@
 
                            <form method="post" onsubmit="return verifySubmit();" action="<?php echo Config::get('URL'); ?>HelpRequest/create">
 
-                           <input type="hidden" name="hidden_tbl_num" value="<?php echo Session::get('table_number'); ?>">
+                           <input type="hidden" id="hidden_tbl_num_id" name="hidden_tbl_num" value="<?php echo Session::get('table_number'); ?>">
 
                            <table class="table table-bordered table-hover">
 
@@ -160,7 +160,7 @@
 
                             <tr align="center">
                               <td colspan="2">
-                                <input id="student_submit" type="submit" value="submit">
+                                <input id="student_submit" type="submit" value="submit" onclick="verifyTblB4Submit();">
                               </td>
                             </tr>
 
@@ -199,6 +199,13 @@
 <script type="text/javascript">
 
   var opts = $('#sub_subj_DD_ID').html();
+
+  function verifyTblB4Submit() {
+    if (parseInt(document.getElementById("hidden_tbl_num_id").value) < 0) {
+      document.getElementById("hidden_tbl_num_id").value = sessionStorage.tblNumber;
+      alert(document.getElementById("hidden_tbl_num_id").value);
+    }
+  }
 
   function verifySubject() {
     if (document.getElementById("subj_DD_ID").selectedIndex == 0) {

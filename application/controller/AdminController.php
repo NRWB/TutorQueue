@@ -51,6 +51,12 @@ class AdminController extends Controller {
     );
   }
 
+
+  public function editPageTimeouts() {
+    $this->View->renderWithoutHeaderAndFooter('admin/editPageTimeouts');
+  }
+
+
   /**
    * The uploadSchedule method
    * If moved to /admin/uploadSchedule, will render following view.
