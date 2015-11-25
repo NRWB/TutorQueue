@@ -96,7 +96,7 @@
           <form method="post" action="<?php echo Config::get('URL'); ?>tutor/helpPanel">
             <!-- <div class="col-xs-4 col-xs-offset-8"> -->
             <div class="col-xs-2 col-xs-offset-10 text-right">
-              <input type="text" class="form-control" name="input_tutor_text_code" id="tutorcode" autocomplete="off">
+              <input type="password" class="form-control" name="input_tutor_text_code" id="tutorcode" autocomplete="off">
             </div>
             <div class="col-xs-12 text-right">
               <input type="submit" class="btn btn-default" value="Enter Tutor Portal">
