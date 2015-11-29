@@ -16,7 +16,7 @@
     </div>
 
     <div>
-      View a template example of the expected excel format: <a href=""><b>here</b></a>.
+      View a template example of the expected excel format: <a href="<?php echo Config::get('URL'); ?>ScheduleTestFile.xlsm"><b>here</b></a>.
     </div>
 
   </div>
