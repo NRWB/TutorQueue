@@ -20,4 +20,9 @@ class HelpRequestController extends Controller {
     }
     Redirect::toDelay('index', '3');
   }
+
+  public function update() {
+    HelpRequestModel::updateEntry(Request::post('name_entry'), Request::post('progress_state'));
+  }
+
 }

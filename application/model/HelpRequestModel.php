@@ -59,6 +59,13 @@ class HelpRequestModel {
     return false;
   }
 
+  public static function updateEntry($name_num, $state_of) {
+    $database = DatabaseFactory::getFactory()->getConnection();
+    $sql = "UPDATE qscQueue.tblRequests SET serviceState = :state_of_text WHERE id = :name_num_id";
+    $query = $database->prepare($sql);
+    $query->execute(array(':state_of_text' => $state_of, ':name_num)id' => $name_num));
+  }
+
   public static function updateNote($note_id, $note_text) {
     if (!$note_id || !$note_text) {
       return false;

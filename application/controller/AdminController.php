@@ -70,7 +70,22 @@ class AdminController extends Controller {
    * If moved to /admin/dataDump, will render following view.
    */
   public function dataDump() {
-    $this->View->render('admin/dataDump');
+    $this->View->renderWithoutHeaderAndFooter('admin/dataDump');
+  }
+
+  /**
+   *
+   */
+  public function reqDataDumpSpecs() {
+    AdminModel::makeDDRequest(
+      Request::post('start_month_val'),
+      Request::post('start_day_val'),
+      Request::post('start_year_val'),
+      Request::post('end_month_val'),
+      Request::post('end_day_val'),
+      Request::post('end_year_val')
+    );
+    Redirect::to("admin/dataDump");
   }
 
   /**

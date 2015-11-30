@@ -58,7 +58,16 @@
 
     <?php if (Session::userIsLoggedIn()) { ?>
       <div class="panel panel-header">
-        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number = <?php echo Session::get("table_number"); ?>
+<!--        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number = <?php echo Session::get("table_number"); ?> -->
+        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number =
+        <?php
+          $val = Session::get("table_number");
+          if (gettype($val) == "integer") {
+            echo Session::get("table_number");
+          } else if (gettype($val) == "array") {
+            echo Session::get("table_number")[0];
+          }
+        ?>
       </div>
     <?php } ?>
 

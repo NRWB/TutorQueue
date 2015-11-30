@@ -94,7 +94,7 @@
                 <div class="panel-body">
                   <div class="table-responsive">
 
-                    <form method="post" onsubmit="alert('ty 4 submit');'" action="">
+                    <form method="post" action="">
 
                       <table id="table_holder" class="table table-bordered table-hover">
                       </table>
@@ -107,7 +107,8 @@
                 <div align="left">
                   <div class="panel-body">
 
-                    <a id="add_student" href="#" class="btn btn-default" role="button" onclick="alert('hi');">
+<!--                    <a id="add_student" href="#" class="btn btn-default" role="button" onclick="alert('hi');"> -->
+                    <a id="add_student" class="btn btn-default" role="button">
                       Add Student to Queue
                     </a>
 
@@ -155,8 +156,62 @@
   </div><!-- close class="wrapper" -->
 
 <script>
+
   $('#table_holder').load('<?php echo config::get('URL'); ?>tutor/updateTableTutors');
-  
+
+// http://stackoverflow.com/questions/2145012/adding-rows-dynamically-with-jquery
+  $(document).ready(function() {
+    $("#add_student").click(function() {
+//      $('#table_holder tbody>tr:last').clone(true).insertAfter('#table_holder tbody>tr:last');
+
+//      $.post("<?php echo Config::get('URL'); ?>HelpRequest/create", function(){} );
+      var formSubjData = {
+        hidden_tbl_num: "<?php echo Session::get('table_number'); ?>",
+        subj_DD: "CSS (CSS)"
+      };
+
+      $.ajax({
+        url: "<?php echo Config::get('URL'); ?>HelpRequest/create",
+        type: "POST",
+        data: formSubjData,
+        success: function(data, textStatus, jqXHR){},
+        error: function (jqXHR, textStatus, errorThrown){}
+      });
+
+//      $('#table_holder').load('<?php echo config::get('URL'); ?>tutor/updateTableTutors');
+      location.reload();
+
+      return false;
+    });
+  });
+
+//  $(document).ready(function() {
+//    $("input[type='radio']").change(function () {
+//    $("input[type='radio']").live('change', function () {
+// http://stackoverflow.com/questions/19199767/jquery-radio-button-submit-value-onclick
+    $(document).on('change', 'input[type="radio"]', function() {
+
+      var selection=$(this).val();
+
+      var selName=$(this)[0].name;
+
+      var formSubjData = {
+        name_entry: selName,
+        progress_state: selection
+      };
+
+      $.ajax({
+        url: "<?php echo Config::get('URL'); ?>HelpRequest/update",
+        type: "POST",
+        data: formSubjData,
+        success: function(data, textStatus, jqXHR){},
+        error: function (jqXHR, textStatus, errorThrown){ alert(textStatus); }
+      });
+
+      alert("State changed to: " + selection);
+    });
+//  });
+
 </script>
 
 </body>

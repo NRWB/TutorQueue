@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/style.css" />
 <!--  <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/bootstrap.min.css" /> -->
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 <!--
   <script src="<?php echo Config::get('URL'); ?>js/jquery-latest.min.js"></script>
@@ -16,8 +16,8 @@
   <script src="<?php echo Config::get('URL'); ?>js/bootstrap.min.js"></script>
 -->
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -87,55 +87,69 @@
  http://www.xul.fr/ajax/dynamic-select.php
 -->
 
-<div class="container">
+    <div class="container">
 
-  <h1>Add/Remove Drop Down Elements</h1>
+      <h1>Add/Remove Drop Down Elements</h1>
 
-  <div class="box">
+      <div class="box">
 
-    <!-- echo out the system feedback (error and success messages) -->
-    <?php $this->renderFeedbackMessages(); ?>
+        <!-- echo out the system feedback (error and success messages) -->
+        <?php $this->renderFeedbackMessages(); ?>
 
-      <div class="row">
-        <div class="col-md-10">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="panel panel-primary">
 
-              <h2 class="panel-title">Edit Subjects Panel
-              <span class="pull-right clickable">
-                <i class="glyphicon glyphicon-chevron-up"></i>
-              </span>
-              </h2>
-            </div>
-            <div class="panel-body">
+                <div class="panel-heading">
 
-<form id="dynsel" name="dynsel" method="post" action="dynamic-select-demo.html">
-  <table border="0" cellspacing="0" cellpadding="8">
-    <tr>
-      <td>
-        <div align="center">
-          <select name="select1" id="select1" size="10" style="width:180px" multiple onchange="selectoption();" >
-          </select>
-        </div>
-      </td>
+                  <h2 class="panel-title">
+                    Edit Subjects Panel
+                    <span class="pull-right clickable">
+                      <i class="glyphicon glyphicon-chevron-up">
+                      </i>
+                    </span>
+                  </h2>
 
-      <td>
-        <input name="title" type="text" id="title"  value="" size="24" placeholder="Input text here" />
-        <input type="button" name="add"  style="width:140px" value="Add to select" onclick="addoption()" />
-        <br /><br />
-        <input type="button" name="del"  style="width:120px" value="Delete" onclick="deloption()"  />
-        <span  style="margin-left:16px" >Remove the selected option </span>
-        <br /><br />
-      </td>
-    </tr>
-  </table>
-  <p>
-    <div align="center">
-      <input type="button" name="SubmitSave" value="Save the list of options" onclick="savelist(this)" />
-    </div>
-  </p>
-</form>
+                </div>
 
+                <div class="panel-body">
+
+<!--                  <form id="dynsel" name="dynsel" method="post" action="dynamic-select-demo.html"> -->
+                  <form id="dynsel" name="dynsel" method="post">
+                    <table border="0" cellspacing="0" cellpadding="8">
+                      <tr>
+
+                        <td>
+                          <div align="center">
+                            <select name="select1" id="select1" size="10" style="width:180px" multiple onchange="selectoption();" >
+                            </select>
+                          </div>
+                        </td>
+
+                        <td>
+                          <label for="title">Add:</label>
+                          <br />
+                          <input type="text" name="title" id="title" value="" size="24" placeholder="Input text here" />
+                          <input type="button" name="add" id="addBtn" style="width:140px" value="Add to select" onclick="addoption()" />
+                          <br /><br />
+<!--                          <span style="margin-left:16px"> -->
+                            Remove the selected
+<!--                          </span> -->
+                          <br />
+                          <input type="button" name="del" style="width:120px" value="Delete" onclick="deloption()" />
+                          <br /><br />
+                        </td>
+
+                      </tr>
+                    </table>
+
+                    <p>
+                      <div align="center">
+                        <input type="button" name="SubmitSave" value="Save the list of options" onclick="savelist(this)" />
+                      </div>
+                    </p>
+
+                  </form>
 
 <!--
         <?php foreach ($this->quicknotes as $note) { ?>
@@ -146,42 +160,49 @@
         <?php } ?>
 -->
 
+                  </form>
 
-</div>
-</div>
+                </div> <!-- End of Panel Body -->
 
-    </div>
-    </div>
+              </div> <!-- End of Panel Panel Primary -->
+            </div> <!-- End of Col-md-10 -->
+          </div> <!-- End of row -->
 
-  </div>
-</div>
+        </div> <!-- End of box -->
+      </div> <!-- End of container -->
 
-
-
-  <div class="container">
-    <p style="display: block; font-size: 11px; color: #999;">
-      <div class="footer" align="center">
-        <a href="http://www.washington.edu/"><img src="https://www.washington.edu/home/graphics/blockw.gif" width="53" height="37" alt="UW Logo"></a>
-        <br>
-        <a href="http://www.bothell.washington.edu/qsc">Contact QSC</a>
+      <div class="container">
+        <p style="display: block; font-size: 11px; color: #999;">
+          <div class="footer" align="center">
+            <a href="http://www.washington.edu/"><img src="https://www.washington.edu/home/graphics/blockw.gif" width="53" height="37" alt="UW Logo"></a>
+            <br>
+            <a href="http://www.bothell.washington.edu/qsc">Contact QSC</a>
+          </div>
+        </p>
       </div>
-    </p>
-  </div>
 
   </div><!-- close class="wrapper" -->
 
 <script>
 
+$(document).ready(function() {
+  $('#title').keypress(function(e) {
+    if (e.keyCode == 13) { // DOM_VK_RETURN = 13
+      $('#addBtn').click();
+    }
+  });
+});
+
 // Ajax funtion to load a file.
 
 function dataRead(url, fun) {
   var xhr = createXHR();
-  xhr.onreadystatechange=function() {
+  xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       if (xhr.status == 200) {
         fun(xhr.responseText);
-	  }
-	}
+      }
+    }
   };
   url = url + "?nocache=" + Math.random();
   xhr.open("GET", url, true);
