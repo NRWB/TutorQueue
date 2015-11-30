@@ -204,7 +204,7 @@
         url: "<?php echo Config::get('URL'); ?>HelpRequest/update",
         type: "POST",
         data: formSubjData,
-        success: function(data, textStatus, jqXHR){},
+        success: function(data, textStatus, jqXHR){ alert(textStatus); },
         error: function (jqXHR, textStatus, errorThrown){ alert(textStatus); }
       });
 

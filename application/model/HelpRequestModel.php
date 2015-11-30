@@ -63,7 +63,7 @@ class HelpRequestModel {
     $database = DatabaseFactory::getFactory()->getConnection();
     $sql = "UPDATE qscQueue.tblRequests SET serviceState = :state_of_text WHERE id = :name_num_id";
     $query = $database->prepare($sql);
-    $query->execute(array(':state_of_text' => $state_of, ':name_num)id' => $name_num));
+    $res = $query->execute(array(':state_of_text' => $state_of, ':name_num_id' => $name_num));
   }
 
   public static function updateNote($note_id, $note_text) {
