@@ -1,11 +1,10 @@
 <div class="container">
-    <h1>LoginController/changePassword</h1>
+    <h1>Set new Password</h1>
 
     <!-- echo out the system feedback (error and success messages) -->
     <?php $this->renderFeedbackMessages(); ?>
 
     <div class="box">
-        <h2>Set new password</h2>
 
         <!-- new password form box -->
         <form method="post" action="<?php echo Config::get('URL'); ?>login/changePassword_action" name="new_password_form">
