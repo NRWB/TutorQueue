@@ -133,6 +133,9 @@ class RegistrationModel {
    * @return bool
    */
   public static function validateUserEmail($user_email) {
+
+    return true; // B/c feature currently unused and not supported/gathered
+
     if (empty($user_email)) {
       Session::add('feedback_negative', Text::get('FEEDBACK_EMAIL_FIELD_EMPTY'));
       return false;
