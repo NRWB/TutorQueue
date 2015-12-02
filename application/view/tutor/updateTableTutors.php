@@ -85,9 +85,9 @@
     echo "</td><td>";
     echo $record->helpingTutor;
     echo "</td><td>";
-    echo "<input type='checkbox' name='remove' id='rmChkBx'>";
+    echo "<input type='checkbox' name='removeChkBox' id='$record->id'>";
     echo "</td><td>";
-    echo "<input type='checkbox' name='addToTop' id='rmAndAddTop'>";
+    echo "<input type='checkbox' name='addTopChkBox' id='$record->id'>";
     echo "</td></tr>";
   }
 ?>

@@ -66,6 +66,13 @@ class HelpRequestModel {
     $res = $query->execute(array(':state_of_text' => $state_of, ':name_num_id' => $name_num));
   }
 
+  public static function removeEntry($the_id) {
+    $database = DatabaseFactory::getFactory()->getConnection();
+    $sql = "DELETE FROM qscQueue.tblRequests WHERE tblRequests.id = :removable_id";
+    $query = $database->prepare($sql);
+    $res = $query->execute(array(':removable_id' => $the_id));
+  }
+
   public static function updateNote($note_id, $note_text) {
     if (!$note_id || !$note_text) {
       return false;

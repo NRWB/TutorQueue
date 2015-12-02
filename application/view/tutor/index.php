@@ -161,12 +161,24 @@
 
 // http://stackoverflow.com/questions/2145012/adding-rows-dynamically-with-jquery
   $(document).ready(function() {
+
     $("#add_student").click(function() {
 //      $('#table_holder tbody>tr:last').clone(true).insertAfter('#table_holder tbody>tr:last');
 
 //      $.post("<?php echo Config::get('URL'); ?>HelpRequest/create", function(){} );
       var formSubjData = {
+/*
         hidden_tbl_num: "<?php echo Session::get('table_number'); ?>",
+*/
+        hidden_tbl_num: "<?php
+                            $val = Session::get('table_number');
+                            if (gettype($val) == 'integer') {
+                              echo Session::get('table_number');
+                            } else if (gettype($val) == 'array') {
+                              echo Session::get('table_number')[0];
+                            }
+                          ?>",
+
         subj_DD: "CSS (CSS)"
       };
 
@@ -185,15 +197,36 @@
     });
   });
 
+  $(document).on('change', 'input[type="checkbox"]', function() {
+    var selection = $(this).val();
+    var selName = $(this)[0].name;
+
+    if (selName == "removeChkBox") {
+      var formSubjData = {
+        the_id: $(this)[0].id
+      };
+
+      $.ajax({
+        url: "<?php echo Config::get('URL'); ?>HelpRequest/remove",
+        type: "POST",
+        data: formSubjData,
+        success: function(data, textStatus, jqXHR){ alert(textStatus); },
+        error: function (jqXHR, textStatus, errorThrown){ alert(textStatus); }
+      });
+
+    }
+
+  });
+
 //  $(document).ready(function() {
 //    $("input[type='radio']").change(function () {
 //    $("input[type='radio']").live('change', function () {
 // http://stackoverflow.com/questions/19199767/jquery-radio-button-submit-value-onclick
     $(document).on('change', 'input[type="radio"]', function() {
 
-      var selection=$(this).val();
+      var selection = $(this).val();
 
-      var selName=$(this)[0].name;
+      var selName = $(this)[0].name;
 
       var formSubjData = {
         name_entry: selName,

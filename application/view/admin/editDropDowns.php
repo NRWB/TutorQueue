@@ -103,7 +103,7 @@
                 <div class="panel-heading">
 
                   <h2 class="panel-title">
-                    Edit Subjects Panel
+                    Edit Tutor Quick Notes Panel
                     <span class="pull-right clickable">
                       <i class="glyphicon glyphicon-chevron-up">
                       </i>
@@ -163,6 +163,40 @@
                   </form>
 
                 </div> <!-- End of Panel Body -->
+
+<!-- xxxxxxxxxxxxx 
+
+                <div class="panel-heading">
+
+                  <h2 class="panel-title">
+                    Edit Subjects Panel
+                    <span class="pull-right clickable">
+                      <i class="glyphicon glyphicon-chevron-up">
+                      </i>
+                    </span>
+                  </h2>
+
+                </div>
+
+                <div class="panel-body">
+                </div>
+
+
+                <div class="panel-heading">
+
+                  <h2 class="panel-title">
+                    Edit Subjects Panel
+                    <span class="pull-right clickable">
+                      <i class="glyphicon glyphicon-chevron-up">
+                      </i>
+                    </span>
+                  </h2>
+
+                </div>
+
+                <div class="panel-body">
+                </div>
+-->
 
               </div> <!-- End of Panel Panel Primary -->
             </div> <!-- End of Col-md-10 -->
@@ -329,6 +363,33 @@ $(document).on('click', '.panel-heading span.clickable', function(e) {
     $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
   }
 })
+/**
+$(document).on('click', '.panel-heading span.clickable', function(e) {
+  var $this = $(this);
+  if (!$this.hasClass('panel-collapsed')) {
+    $this.closest('.panel').find('.panel-body').slideUp();
+    $this.addClass('panel-collapsed');
+    $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+  } else {
+    $this.parents('.panel').find('.panel-body').slideDown();
+    $this.removeClass('panel-collapsed');
+    $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+  }
+})
+
+$(document).on('click', '.panel-heading span.clickable', function(e) {
+  var $this = $(this);
+  if (!$this.hasClass('panel-collapsed')) {
+    $this.closest('.panel').find('.panel-body').slideUp();
+    $this.addClass('panel-collapsed');
+    $this.find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+  } else {
+    $this.parents('.panel').find('.panel-body').slideDown();
+    $this.removeClass('panel-collapsed');
+    $this.find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+  }
+})
+*/
 
 </script>
 

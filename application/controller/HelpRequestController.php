@@ -25,4 +25,8 @@ class HelpRequestController extends Controller {
     HelpRequestModel::updateEntry(Request::post('name_entry'), Request::post('progress_state'));
   }
 
+  public function remove() {
+    HelpRequestModel::removeEntry(Request::post('the_id'));
+  }
+
 }
