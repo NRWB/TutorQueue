@@ -10,7 +10,7 @@
           <div class="panel panel-default">
 
             <h2>Thank you, your request has been placed successfully.</h2>
-            (Returning to the Create a Request Panel in 3 seconds, click <a href="<?php echo Config::get('URL') . 'student' ?>"><b><u>here</u></b></a> if the page does not load automatically)
+            (Returning to the QSC Queue in 3 seconds, click <a href="<?php echo Config::get('URL') . 'student' ?>"><b><u>here</u></b></a> if the page does not load automatically)
 
           </div> <!-- end "panel panel-default" -->
         </div> <!-- end "col-lg-12" -->

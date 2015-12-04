@@ -72,7 +72,7 @@
     <?php } ?>
 
     <div class="container">
-      <h1>QSC Tutor Queue</h1>
+      <h1>QSC Queue</h1>
       <div class="box">
 
         <!-- echo out the system feedback (error and success messages) -->
