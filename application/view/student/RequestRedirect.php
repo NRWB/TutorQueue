@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Student View</h1>
+  <h1>Enter Queue</h1>
   <div class="box">
     <!-- echo out the system feedback (error and success messages) -->
     <?php $this->renderFeedbackMessages(); ?>
