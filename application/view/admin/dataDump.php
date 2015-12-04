@@ -98,7 +98,7 @@
         <div class="row">
           <div class="col-lg-12">
 
-            <form method="post" onsubmit="return verifySubmit();" action="<?php echo Config::get('URL'); ?>admin/reqDataDumpSpecs">
+            <form method="post" action="<?php echo Config::get('URL'); ?>admin/reqDataDump">
 
             <h3>
               Start Date:
@@ -242,7 +242,7 @@
 
             <div class="row">
               <br>
-                <input type="submit" value="Submit" onclick="<?php echo Config::get('URL'); ?>admin/panel">
+                <input type="submit" value="Submit" id="sub_id">
             </div>
 
             </form>

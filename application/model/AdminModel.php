@@ -29,10 +29,10 @@ class AdminModel {
   }
 
 // s=start, e=end
-  public static function makeDDRequest($sMon, $sDay, $sYr, $eMon, $eDay, $eYr) {
+  public static function reqDataDump($sMon, $sDay, $sYr, $eMon, $eDay, $eYr) {
     $database = DatabaseFactory::getFactory()->getConnection();
 
-    $query = $database->prepare("SELECT * FROM qscQueue.tblRequests WHERE tsRequest >= :start_d_m_y, tsRequest <= :end_d_m_y INTO OUTFILE 'aFile.csv' FIELDS TERMINATED BY ','");
+    $query = $database->prepare("SELECT * FROM qscQueue.tblRequests WHERE tsRequest >= :start_d_m_y, tsRequest <= :end_d_m_y");
 
     if ((intval($sMon) > 0) && (intval($sMon) < 10)) { $sMon = '0' . $sMon; }
     if ((intval($sDay) > 0) && (intval($sDay) < 10)) { $sDay = '0' . $sDay; }
@@ -41,10 +41,12 @@ class AdminModel {
     $start_date = $sMon . '-' . $sDay . '-' . $sYr . ' 00:00:00';
     $end_date = $eMon . '-' . $eDay . '-' . $eYr . ' 00:00:00';
 
-    $query->execute(array(
-      ':start_d_m_y' => $start_date,
-      ':end_d_m_y' => $end_date
-    ));
+    $result = $query->execute(array(
+                ':start_d_m_y' => $start_date,
+                ':end_d_m_y' => $end_date
+              ));
+
+    return $result->fetchAll();
 
   }
 

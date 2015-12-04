@@ -76,8 +76,8 @@ class AdminController extends Controller {
   /**
    *
    */
-  public function reqDataDumpSpecs() {
-    AdminModel::makeDDRequest(
+  public function reqDataDump() {
+    AdminModel::reqDataDump(
       Request::post('start_month_val'),
       Request::post('start_day_val'),
       Request::post('start_year_val'),

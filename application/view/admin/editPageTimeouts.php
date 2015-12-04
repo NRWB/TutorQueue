@@ -102,14 +102,14 @@
                 <form>
                   <p>
                     <label for="help_req_timeout_id">
-                      Wait time after student creates help request:
+                      Wait time after student creates help request (in seconds):
                     </label>
                     <input type="text" class="form-control" id="help_req_timeout_id" name="help_req_timeout" placeholder="Enter new timeout value">
                   </p>
                   <br>
                   <p>
                     <label for="tutor_timeout_id">
-                      Wait time after tutor enters the tutor-view:
+                      Wait time after tutor enters the tutor-view (in seconds):
                     </label>
                     <input type="text" class="form-control" id="tutor_timeout_id" name="tutor_timeout" placeholder="Enter new timeout value">
                   </p>
