@@ -104,16 +104,17 @@
                   </div> <!-- End "table-responsive" -->
                 </div> <!-- End "panel-body" -->
 
+<!--
                 <div align="left">
                   <div class="panel-body">
 
-<!--                    <a id="add_student" href="#" class="btn btn-default" role="button" onclick="alert('hi');"> -->
                     <a id="add_student" class="btn btn-default" role="button">
                       Add Student to Queue
                     </a>
 
                   </div>
                 </div>
+-->
 
                 <div align="right">
                   <div class="panel-body">

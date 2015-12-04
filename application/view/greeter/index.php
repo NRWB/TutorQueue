@@ -93,11 +93,13 @@
 
         </div>
 
+<!--
         <form action="<?php echo config::get('URL'); ?>student/index">
           <p>
             <input id="" name="" type="submit" value="Add/Remove an entry">
           </p>
         </form>
+-->
 
         <form action="<?php echo config::get('URL'); ?>greeter/editView">
           <p>
