@@ -11,15 +11,11 @@
 class StudentController extends Controller {
 
   /**
-   * Construct this object by extending the basic Controller class
-   */
-  /**
-   * @function 
+   * @function __construct
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc Construct this object by extending the basic Controller class.
+   * @param NONE
    * @example NONE
    */
   public function __construct() {
@@ -32,15 +28,11 @@ class StudentController extends Controller {
   }
 
   /**
-   * This method controls what happens when you move to /admin or /admin/index in your app.
-   */
-  /**
-   * @function 
+   * @function index
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc This method controls what happens when you move to /admin or /admin/index in your app.
+   * @param NONE
    * @example NONE
    */
   public function index() {
@@ -54,16 +46,11 @@ class StudentController extends Controller {
 
 
   /**
-   function name: 
-   description: 
-  */
-  /**
-   * @function 
+   * @function populateSubSubj
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function populateSubSubj() {
@@ -71,12 +58,11 @@ class StudentController extends Controller {
   }
 
   /**
-   * @function 
+   * @function updateDropDowns
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function updateDropDowns() {
@@ -84,12 +70,11 @@ class StudentController extends Controller {
   }
 
   /**
-   * @function 
+   * @function tableSetup
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function tableSetup() {
@@ -101,12 +86,11 @@ class StudentController extends Controller {
   }
 
   /**
-   * @function 
+   * @function table_setup
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function table_setup() {

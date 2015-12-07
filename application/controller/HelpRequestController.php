@@ -11,12 +11,11 @@
 class HelpRequestController extends Controller {
 
   /**
-   * @function 
+   * @function __construct
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function __construct() {
@@ -25,12 +24,11 @@ class HelpRequestController extends Controller {
   }
 
   /**
-   * @function 
+   * @function create
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function create() {
@@ -48,12 +46,11 @@ class HelpRequestController extends Controller {
   }
 
   /**
-   * @function 
+   * @function update
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function update() {
@@ -61,12 +58,11 @@ class HelpRequestController extends Controller {
   }
 
   /**
-   * @function 
+   * @function remove
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function remove() {

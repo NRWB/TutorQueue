@@ -11,15 +11,11 @@
 class TutorController extends Controller {
 
   /**
-   * Construct this object by extending the basic Controller class
-   */
-  /**
-   * @function 
+   * @function __construct
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc Construct this object by extending the basic Controller class.
+   * @param NONE
    * @example NONE
    */
   public function __construct() {
@@ -32,12 +28,11 @@ class TutorController extends Controller {
   }
 
   /**
-   * @function 
+   * @function index
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function index() {
@@ -45,15 +40,11 @@ class TutorController extends Controller {
   }
 
   /**
-   * This method controls what happens when you move to /tutor or /admin/index in your app.
-   */
-  /**
-   * @function 
+   * @function helpPanel
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc This method controls what happens when you move to /tutor or /admin/index in your app.
+   * @param NONE
    * @example NONE
    */
   public function helpPanel() {
@@ -68,12 +59,11 @@ class TutorController extends Controller {
   }
 
   /**
-   * @function 
+   * @function leaveHelpPanel
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function leaveHelpPanel() {
@@ -82,12 +72,11 @@ class TutorController extends Controller {
   }
 
   /**
-   * @function 
+   * @function updateTableTutors
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function updateTableTutors() {

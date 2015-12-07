@@ -11,15 +11,11 @@
 class ErrorController extends Controller {
 
   /**
-   * Construct this object by extending the basic Controller class
-   */
-  /**
-   * @function 
+   * @function __construct
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc Construct this object by extending the basic Controller class
+   * @param NONE
    * @example NONE
    */
   public function __construct() {
@@ -27,20 +23,11 @@ class ErrorController extends Controller {
   }
 
   /**
-   * Use this when something is not found.
-   * Gives back a proper 404 header response plus a normal page
-   *  (where you could* show a well-designed error message or
-   *   something more useful for your users).
-   * You can see this in action
-   *  in action in /core/Application.php -> __construct()
-   */
-  /**
-   * @function 
+   * @function error404
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc Use this when something is not found. Gives back a proper 404 header response plus a normal page (where you could show a well-designed error message or something more useful for your users). You can see this in action in /core/Application.php -> __construct()
+   * @param NONE
    * @example NONE
    */
   public function error404() {

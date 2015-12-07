@@ -11,15 +11,11 @@
 class IndexController extends Controller {
 
   /**
-   * Construct this object by extending the basic Controller class
-   */
-  /**
-   * @function 
+   * @function __construct
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc Construct this object by extending the basic Controller class.
+   * @param NONE
    * @example NONE
    */
   public function __construct() {
@@ -28,17 +24,11 @@ class IndexController extends Controller {
   }
 
   /**
-   * Handles what happens when user moves to
-   *  URL/index/index - or - as this is the default controller, also
-   *   when user moves to /index or enter your application at base level
-   */
-  /**
-   * @function 
+   * @function index
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc Handles what happens when user moves to URL/index/index - or - as this is the default controller, also when user moves to /index or enter your application at base level.
+   * @param NONE
    * @example NONE
    */
   public function index() {
@@ -49,12 +39,11 @@ class IndexController extends Controller {
   }
 
   /**
-   * @function 
+   * @function updateTable
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function updateTable() {

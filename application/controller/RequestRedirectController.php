@@ -11,12 +11,11 @@
 class RequestRedirect extends Controller {
 
   /**
-   * @function 
+   * @function __construct
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function __construct() {
@@ -25,12 +24,11 @@ class RequestRedirect extends Controller {
   }
 
   /**
-   * @function 
+   * @function index
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function index() {
@@ -38,12 +36,11 @@ class RequestRedirect extends Controller {
   }
 
   /**
-   * @function 
+   * @function RequestRedirect
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function RequestRedirect() {

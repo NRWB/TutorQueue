@@ -11,17 +11,11 @@
 class AdminController extends Controller {
 
   /**
-   * Constructs AdminController object by extending the basic Controller class.
-   * Checks for the proper admin authentication for entire controller.
-   * All methods inside this controller are only accessible for admin users (users of role type/level 7).
-   */
-  /**
-   * @function 
+   * @function __construct
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc Constructs AdminController object by extending the basic Controller class. Checks for the proper admin authentication for entire controller. All methods inside this controller are only accessible for admin users (users of role type/level 7).
+   * @param NONE
    * @example NONE
    */
   public function __construct() {
@@ -30,16 +24,11 @@ class AdminController extends Controller {
   }
 
   /**
-   * The index method
-   * If moved to /admin or /admin/index, will render following view.
-   */
-  /**
-   * @function 
+   * @function index
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc If moved to /admin or /admin/index, will render following view.
+   * @param NONE
    * @example NONE
    */
   public function index() {
@@ -47,16 +36,11 @@ class AdminController extends Controller {
   }
 
   /**
-   * The panel method
-   * If moved to /admin/panel, will render following view.
-   */
-  /**
-   * @function 
+   * @function panel
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc If moved to /admin/panel, will render following view.
+   * @param NONE
    * @example NONE
    */
   public function panel() {
@@ -64,16 +48,11 @@ class AdminController extends Controller {
   }
 
   /**
-   * The editAccounts method
-   * If moved to /admin/editAccounts, will render following view.
-   */
-  /**
-   * @function 
+   * @function editAccounts
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc If moved to /admin/editAccounts, will render the following view.
+   * @param NONE
    * @example NONE
    */
   public function editAccounts() {
@@ -83,16 +62,11 @@ class AdminController extends Controller {
   }
 
   /**
-   * The editDropDowns method
-   * If moved to /admin/editDropDowns, will render following view.
-   */
-  /**
-   * @function 
+   * @function editDropDowns
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc If moved to /admin/editDropDowns, will render following view.
+   * @param NONE
    * @example NONE
    */
   public function editDropDowns() {
@@ -102,12 +76,11 @@ class AdminController extends Controller {
   }
 
   /**
-   * @function 
+   * @function editPageTimeouts
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc If moved to /admin/editPageTimeouts, will render the following view.
+   * @param NONE
    * @example NONE
    */
   public function editPageTimeouts() {
@@ -115,16 +88,11 @@ class AdminController extends Controller {
   }
 
   /**
-   * The uploadSchedule method
-   * If moved to /admin/uploadSchedule, will render following view.
-   */
-  /**
-   * @function 
+   * @function uploadSchedule
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc If moved to /admin/uploadSchedule, will render following view.
+   * @param NONE
    * @example NONE
    */
   public function uploadSchedule() {
@@ -132,16 +100,11 @@ class AdminController extends Controller {
   }
 
   /**
-   * The dataDump method
-   * If moved to /admin/dataDump, will render following view.
-   */
-  /**
-   * @function 
+   * @function dataDump
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc If moved to /admin/dataDump, will render the following view.
+   * @param NONE
    * @example NONE
    */
   public function dataDump() {
@@ -149,12 +112,11 @@ class AdminController extends Controller {
   }
 
   /**
-   * @function 
+   * @function reqDataDump
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function reqDataDump() {
@@ -170,16 +132,11 @@ class AdminController extends Controller {
   }
 
   /**
-   * The actionAccountSettings method
-   * Posts info from user to delete a specific user.
-   */
-  /**
-   * @function 
+   * @function actionAccountSettings
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc Posts info from user to delete a specific user.
+   * @param NONE
    * @example NONE
    */
   public function actionAccountSettings() {

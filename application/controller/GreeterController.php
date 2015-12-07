@@ -11,15 +11,11 @@
 class GreeterController extends Controller {
 
   /**
-   * Construct this object by extending the basic Controller class
-   */
-  /**
-   * @function 
+   * @function __construct
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc Construct this object by extending the basic Controller class
+   * @param NONE
    * @example NONE
    */
   public function __construct() {
@@ -32,15 +28,11 @@ class GreeterController extends Controller {
   }
 
   /**
-   * This method controls what happens when you move to /admin or /admin/index in your app.
-   */
-  /**
-   * @function 
+   * @function index
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc This method controls what happens when you move to /admin or /admin/index in your app.
+   * @param NONE
    * @example NONE
    */
   public function index() {
@@ -48,12 +40,11 @@ class GreeterController extends Controller {
   }
 
   /**
-   * @function 
+   * @function updateTable
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function updateTable() {
@@ -61,12 +52,11 @@ class GreeterController extends Controller {
   }
 
   /**
-   * @function 
+   * @function updateTable2
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function updateTable2() {
@@ -74,26 +64,23 @@ class GreeterController extends Controller {
   }
 
   /**
-   * @function 
+   * @function editView
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc NONE
+   * @param NONE
    * @example NONE
    */
   public function editView() {
     $this->View->renderWithoutHeaderAndFooter('greeter/editView');
   }
 
- // EDIT for use in the editing of REQUESTS in the tutor queue.
   /**
-   * @function 
+   * @function actionAccountSettings
    * @public
-   * @static
    * @returns NONE
-   * @desc
-   * @param {string} foo Use the 'foo' param for bar.
+   * @desc EDIT for use in the editing of REQUESTS in the tutor queue.
+   * @param NONE
    * @example NONE
    */
   public function actionAccountSettings() {
