@@ -1,9 +1,11 @@
 <?php
 
 /**
- * Class RegistrationModel
- *
- * Everything registration-related happens here.
+ * @author Nick B.
+ * @class RegistrationModel
+ * @classdesc The RegistrationModel class. Everything registration-related happens here.
+ * @license GNU GENERAL PUBLIC LICENSE
+ * @todo DELETE unneeded function(s)
  */
 class RegistrationModel {
 
@@ -12,6 +14,15 @@ class RegistrationModel {
    * 3rd party services, like facebook) and creates a new user in the database if everything is fine
    *
    * @return boolean Gives back the success status of the registration
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public static function registerNewUser() {
     // TODO this could be written simpler and cleaner
@@ -93,6 +104,15 @@ class RegistrationModel {
    *
    * @return bool
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function registrationInputValidation($user_name, $user_password_new, $user_password_repeat, $user_email) {
     $return = true;
 
@@ -114,6 +134,15 @@ class RegistrationModel {
    * @param $user_name
    * @return bool
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function validateUserName($user_name) {
     if (empty($user_name)) {
       Session::add('feedback_negative', Text::get('FEEDBACK_USERNAME_FIELD_EMPTY'));
@@ -133,6 +162,15 @@ class RegistrationModel {
    *
    * @param $user_email
    * @return bool
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public static function validateUserEmail($user_email) {
 
@@ -159,6 +197,15 @@ class RegistrationModel {
    * @param $user_password_new
    * @param $user_password_repeat
    * @return bool
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public static function validateUserPassword($user_password_new, $user_password_repeat) {
     if (empty($user_password_new) OR empty($user_password_repeat)) {
@@ -189,6 +236,15 @@ class RegistrationModel {
    * @param $user_activation_hash
    *
    * @return bool
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public static function writeNewUserToDatabase($user_name, $user_password_hash, $user_email, $user_creation_timestamp, $user_activation_hash) {
     $database = DatabaseFactory::getFactory()->getConnection();
@@ -222,6 +278,15 @@ class RegistrationModel {
    *
    * @param $user_id
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function rollbackRegistrationByUserId($user_id) {
     $database = DatabaseFactory::getFactory()->getConnection();
     $query = $database->prepare("DELETE FROM users WHERE user_id = :user_id");
@@ -237,6 +302,15 @@ class RegistrationModel {
    * @param string $user_activation_hash user's mail verification hash string
    *
    * @return boolean gives back true if mail has been sent, gives back false if no mail could been sent
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public static function sendVerificationEmail($user_id, $user_email, $user_activation_hash) {
     return true;
@@ -262,6 +336,15 @@ class RegistrationModel {
    * @param string $user_activation_verification_code verification token
    *
    * @return bool success status
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public static function verifyNewUser($user_id, $user_activation_verification_code) {
     $database = DatabaseFactory::getFactory()->getConnection();

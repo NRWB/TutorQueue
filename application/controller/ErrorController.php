@@ -1,16 +1,26 @@
 <?php
 
 /**
- * Class Error
- * This controller simply contains some methods that can be used
- *   to give proper feedback in certain error scenarios,
- *   like a proper 404 response with an additional HTML
- *   page behind when something does not exist.
+ * @author Nick B.
+ * @class ErrorController
+ * @classdesc This controller simply contains some methods that can be used to give proper feedback in certain error scenarios, like a proper 404 response with an additional HTML page behind when something does not exist.
+ * @extends Controller
+ * @license GNU GENERAL PUBLIC LICENSE
+ * @todo NONE
  */
 class ErrorController extends Controller {
 
   /**
    * Construct this object by extending the basic Controller class
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function __construct() {
     parent::__construct();
@@ -23,6 +33,15 @@ class ErrorController extends Controller {
    *   something more useful for your users).
    * You can see this in action
    *  in action in /core/Application.php -> __construct()
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function error404() {
     header('HTTP/1.0 404 Not Found', true, 404);

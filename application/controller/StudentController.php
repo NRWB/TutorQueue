@@ -1,9 +1,26 @@
 <?php
 
+/**
+ * @author Nick B.
+ * @class StudentController
+ * @classdesc The StudentController class.
+ * @extends Controller
+ * @license GNU GENERAL PUBLIC LICENSE
+ * @todo NONE
+ */
 class StudentController extends Controller {
 
   /**
    * Construct this object by extending the basic Controller class
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function __construct() {
     parent::__construct();
@@ -16,6 +33,15 @@ class StudentController extends Controller {
 
   /**
    * This method controls what happens when you move to /admin or /admin/index in your app.
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function index() {
 //    $this->View->render('student/index',
@@ -31,14 +57,41 @@ class StudentController extends Controller {
    function name: 
    description: 
   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function populateSubSubj() {
     $this->View->renderWithoutHeaderAndFooter('student/populateSubSubj');
   }
 
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function updateDropDowns() {
     $this->View->render('student/updateDropDowns');
   }
 
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function tableSetup() {
     if (intval(Session::get('table_number')[0]) < 0) {
       $this->View->renderWithoutHeaderAndFooter('student/TableSetup');
@@ -47,6 +100,15 @@ class StudentController extends Controller {
     }
   }
 
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function table_setup() {
     $verify_table_num = StudentModel::table_num_setup();
     if ($verify_table_num) {

@@ -1,10 +1,14 @@
 <?php
 
 /**
- * LoginModel
- * The login part of the model: Handles the login / logout stuff
+ * @author Nick B.
+ * @class LoginModel
+ * @classdesc The LoginModel class. The login part of the model: Handles the login / logout stuff.
+ * @license GNU GENERAL PUBLIC LICENSE
+ * @todo NONE
  */
 class LoginModel {
+
   /**
    * Login process (for DEFAULT user accounts).
    *
@@ -13,6 +17,15 @@ class LoginModel {
    * @param $set_remember_me_cookie mixed Marker for usage of remember-me cookie feature
    *
    * @return bool success state
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public static function login($user_name, $user_password, $set_remember_me_cookie = null) {
 
@@ -76,6 +89,15 @@ class LoginModel {
    *
    * @return bool|mixed
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   private static function validateAndGetUser($user_name, $user_password) {
 
     // brute force attack mitigation: use session failed login count and last failed login for not found users.
@@ -127,6 +149,15 @@ class LoginModel {
    * Reset the failed-login-count to 0.
    * Reset the last-failed-login to an empty string.
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   private static function resetUserNotFoundCounter() {
     Session::set('failed-login-count', 0);
     Session::set('last-failed-login', '');
@@ -135,6 +166,15 @@ class LoginModel {
   /**
    * Increment the failed-login-count by 1.
    * Add timestamp to last-failed-login.
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   private static function incrementUserNotFoundCounter() {
     // Username enumeration prevention: set session failed login count and last failed login for users not found
@@ -149,6 +189,15 @@ class LoginModel {
    * @param $cookie string The cookie "remember_me"
    *
    * @return bool success state
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public static function loginWithCookie($cookie) {
     // do we have a cookie ?
@@ -199,6 +248,15 @@ class LoginModel {
   /**
    * Log out process: delete cookie, delete session
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function logout() {
     $user_id = Session::get('user_id');
 
@@ -216,6 +274,15 @@ class LoginModel {
    * @param $user_name
    * @param $user_email
    * @param $user_account_type
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public static function setSuccessfulLoginIntoSession($user_id, $user_name, $user_email, $user_account_type) {
     Session::init();
@@ -252,6 +319,15 @@ class LoginModel {
    *
    * @param $user_name
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function incrementFailedLoginCounterOfUser($user_name) {
     $database = DatabaseFactory::getFactory()->getConnection();
 
@@ -267,6 +343,15 @@ class LoginModel {
    * Resets the failed-login counter of a user back to 0
    *
    * @param $user_name
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public static function resetFailedLoginCounterOfUser($user_name) {
     $database = DatabaseFactory::getFactory()->getConnection();
@@ -285,6 +370,15 @@ class LoginModel {
      *
      * @param $user_name
      */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
     public static function saveTimestampOfLoginOfUser($user_name)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -301,6 +395,15 @@ class LoginModel {
      *
      * @param $user_id
      */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
     public static function setRememberMeInDatabaseAndCookie($user_id)
     {
         $database = DatabaseFactory::getFactory()->getConnection();
@@ -335,6 +438,15 @@ class LoginModel {
      *
      * @param string $user_id
      */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
     public static function deleteCookie($user_id = null)
     {
         // is $user_id was set, then clear remember_me token in database
@@ -356,6 +468,15 @@ class LoginModel {
    * Returns the current state of the user's login
    *
    * @return bool user's login status
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public static function isUserLoggedIn() {
     return Session::userIsLoggedIn();

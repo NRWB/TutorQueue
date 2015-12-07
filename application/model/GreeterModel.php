@@ -1,10 +1,23 @@
 <?php
 
 /**
- * Handles all data manipulation of the greeter part
+ * @author Nick B.
+ * @class GreeterModel
+ * @classdesc Handles all data manipulation of the greeter part
+ * @license GNU GENERAL PUBLIC LICENSE
+ * @todo 1. Complete function documentation headers
  */
 class GreeterModel {
 
+  /**
+   * @function setRequestDetails
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function setRequestDetails($recordID, $tableNo, $subj, $subSubj, $tutName) {
     $database = DatabaseFactory::getFactory()->getConnection();
 

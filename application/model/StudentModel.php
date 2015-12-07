@@ -1,34 +1,83 @@
 <?php
 
 /**
- * Handles all data manipulation of the student part
+ * @author Nick B.
+ * @class StudentModel
+ * @classdesc The StudentModel class, Handles all data manipulation of the student part.
+ * @license GNU GENERAL PUBLIC LICENSE
+ * @todo NONE
  */
 class StudentModel {
 
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function getSubjects() {
     $database = DatabaseFactory::getFactory()->getConnection();
     $query = $database->query("SELECT * FROM qscSubjects.tblTutorSubjects");
     return $query->fetchAll();
   }
 
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function getSubSubjects($identityNumber) {
     $database = DatabaseFactory::getFactory()->getConnection();
     $query = $database->query("SELECT * FROM qscSubjects.tblTutorSubSubjects WHERE id =".$identityNumber);
     return $query->fetchAll();
   }
 
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function getSubSubjectsAll() {
     $database = DatabaseFactory::getFactory()->getConnection();
     $query = $database->query("SELECT * FROM qscSubjects.tblTutorSubSubjects");
     return $query->fetchAll();
   }
 
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function getTutors() {
     $database = DatabaseFactory::getFactory()->getConnection();
     $query = $database->query("SELECT * FROM qscTutorList.tblAllTutors");
     return $query->fetchAll();
   }
 
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function table_num_setup() {
     $tbl_no = Request::post('input_text_field');
     $database = DatabaseFactory::getFactory()->getConnection();

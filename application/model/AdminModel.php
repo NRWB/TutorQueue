@@ -1,11 +1,23 @@
 <?php
 
 /**
- * The AdminModel class
- * Handles all data manipulation of the admin part.
+ * @author Nick B.
+ * @class AdminModel
+ * @classdesc The AdminModel class, Handles all data manipulation of the admin part.
+ * @license GNU GENERAL PUBLIC LICENSE
+ * @todo NONE
  */
 class AdminModel {
 
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function setAccountDeletionStatus($softDelete, $userId) {
     $database = DatabaseFactory::getFactory()->getConnection();
 
@@ -28,6 +40,15 @@ class AdminModel {
     }
   }
 
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
 // s=start, e=end
   public static function reqDataDump($sMon, $sDay, $sYr, $eMon, $eDay, $eYr) {
     $database = DatabaseFactory::getFactory()->getConnection();
@@ -50,6 +71,15 @@ class AdminModel {
 
   }
 
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function getQuickNotes() {
     $database = DatabaseFactory::getFactory()->getConnection();
     $sql = "SELECT * FROM qscQueue.tblTutorQuickNotes";

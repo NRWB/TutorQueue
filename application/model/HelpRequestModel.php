@@ -1,7 +1,23 @@
 <?php
 
+/**
+ * @author Nick B.
+ * @class HelpRequestModel
+ * @classdesc Help Request functions for adding a student help request to the QSC Queue.
+ * @license GNU GENERAL PUBLIC LICENSE
+ * @todo 1. DELETE unneeded functions 2. Complete function documentation headers
+ */
 class HelpRequestModel {
 
+  /**
+   * @function getAll
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function getAll() {
     $database = DatabaseFactory::getFactory()->getConnection();
     $sql = "SELECT * FROM tblRequests";
@@ -10,15 +26,51 @@ class HelpRequestModel {
     return $query->fetchAll();
   }
 
+  /**
+   * @function getAllWait
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function getAllWait() {
   }
 
+  /**
+   * @function getAllProgress
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function getAllProgress() {
   }
 
+  /**
+   * @function getAllOld
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function getAllOld() {
   }
 
+  /**
+   * @function createHelpRequest
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function createHelpRequest($tbllNo, $subj, $subsubj, $tutorReq) {
     if (!$subj || strlen($subj) == 0) {
       Session::add('feedback_negative', Text::get('FEEDBACK_HELP_REQUEST_CREATION_FAILED'));
@@ -59,6 +111,15 @@ class HelpRequestModel {
     return false;
   }
 
+  /**
+   * @function updateEntry
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function updateEntry($name_num, $state_of) {
     $database = DatabaseFactory::getFactory()->getConnection();
     $sql = "UPDATE qscQueue.tblRequests SET serviceState = :state_of_text WHERE id = :name_num_id";
@@ -66,6 +127,15 @@ class HelpRequestModel {
     $res = $query->execute(array(':state_of_text' => $state_of, ':name_num_id' => $name_num));
   }
 
+  /**
+   * @function removeEntry
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function removeEntry($the_id) {
     $database = DatabaseFactory::getFactory()->getConnection();
     $sql = "DELETE FROM qscQueue.tblRequests WHERE tblRequests.id = :removable_id";
@@ -73,6 +143,15 @@ class HelpRequestModel {
     $res = $query->execute(array(':removable_id' => $the_id));
   }
 
+  /**
+   * @function updateNote
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function updateNote($note_id, $note_text) {
     if (!$note_id || !$note_text) {
       return false;
@@ -88,6 +167,15 @@ class HelpRequestModel {
     return false;
   }
 
+  /**
+   * @function deleteNote
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public static function deleteNote($note_id) {
     if (!$note_id) {
       return false;

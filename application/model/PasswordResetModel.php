@@ -1,12 +1,14 @@
 <?php
 
 /**
- * Class PasswordResetModel
- *
- * Handles all the stuff that is related to the password-reset process
+ * @author Nick B.
+ * @class PasswordResetModel
+ * @classdesc The PasswordResetModel class. Handles all the stuff that is related to the password-reset process.
+ * @license GNU GENERAL PUBLIC LICENSE
+ * @todo DELETE unneeded function(s)
  */
-class PasswordResetModel
-{
+class PasswordResetModel {
+
 	/**
 	 * Perform the necessary actions to send a password reset mail
 	 *
@@ -14,8 +16,16 @@ class PasswordResetModel
 	 *
 	 * @return bool success status
 	 */
-	public static function requestPasswordReset($user_name_or_email)
-	{
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
+  public static function requestPasswordReset($user_name_or_email) {
 		if (empty($user_name_or_email)) {
 			Session::add('feedback_negative', Text::get('FEEDBACK_USERNAME_EMAIL_FIELD_EMPTY'));
 			return false;
@@ -58,6 +68,15 @@ class PasswordResetModel
 	 *
 	 * @return bool success status
 	 */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
 	public static function setPasswordResetDatabaseToken($user_name, $user_password_reset_hash, $temporary_timestamp)
 	{
 		$database = DatabaseFactory::getFactory()->getConnection();
@@ -90,6 +109,15 @@ class PasswordResetModel
 	 *
 	 * @return bool success status
 	 */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
 	public static function sendPasswordResetMail($user_name, $user_password_reset_hash, $user_email)
 	{
 		// create email body
@@ -117,6 +145,15 @@ class PasswordResetModel
 	 * @param string $verification_code Hash token
 	 * @return bool Success status
 	 */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
 	public static function verifyPasswordReset($user_name, $verification_code)
 	{
 		$database = DatabaseFactory::getFactory()->getConnection();
@@ -166,6 +203,15 @@ class PasswordResetModel
 	 *
 	 * @return bool
 	 */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
 	public static function saveNewUserPassword($user_name, $user_password_hash, $user_password_reset_hash)
 	{
 		$database = DatabaseFactory::getFactory()->getConnection();
@@ -197,6 +243,15 @@ class PasswordResetModel
 	 *
 	 * @return bool success state of the password reset
 	 */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
 	public static function setNewPassword($user_name, $user_password_reset_hash, $user_password_new, $user_password_repeat)
 	{
 		// validate the password
@@ -227,6 +282,15 @@ class PasswordResetModel
 	 *
 	 * @return bool
 	 */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
 	public static function validateResetPassword($user_name, $user_password_reset_hash, $user_password_new, $user_password_repeat)
 	{
 		if (empty($user_name)) {
@@ -258,6 +322,15 @@ class PasswordResetModel
 	 *
 	 * @return bool
 	 */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
 	public static function saveChangedPassword($user_name, $user_password_hash)
 	{
 		$database = DatabaseFactory::getFactory()->getConnection();
@@ -286,6 +359,15 @@ class PasswordResetModel
 	 *
 	 * @return bool
 	 */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
 	public static function changePassword($user_name, $user_password_current, $user_password_new, $user_password_repeat)
 	{
 		// validate the passwords
@@ -306,7 +388,6 @@ class PasswordResetModel
 		}
 	}
 
-
 	/**
 	 * Validates current and new passwords
 	 *
@@ -317,6 +398,15 @@ class PasswordResetModel
 	 *
 	 * @return bool
 	 */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
 	public static function validatePasswordChange($user_name, $user_password_current, $user_password_new, $user_password_repeat)
 	{
 		$database = DatabaseFactory::getFactory()->getConnection();

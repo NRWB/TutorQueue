@@ -1,8 +1,12 @@
 <?php
 
 /**
- * LoginController
- * Controls everything that is authentication-related
+ * @author Nick B.
+ * @class LoginController
+ * @classdesc The LoginController class. Controls everything that is authentication-related.
+ * @extends Controller
+ * @license GNU GENERAL PUBLIC LICENSE
+ * @todo NONE
  */
 class LoginController extends Controller {
 
@@ -13,12 +17,30 @@ class LoginController extends Controller {
    *  only usable for logged-in users (for sure not
    *  needed in the LoginController).
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function __construct() {
     parent::__construct();
   }
 
   /**
    * Index, default action (shows the login form), when you do login/index
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function index() {
     // if user is logged in redirect to main-page, if not show the view
@@ -32,6 +54,15 @@ class LoginController extends Controller {
 
   /**
    * The login action, when you do login/login
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function login() {
     // check if csrf token is valid
@@ -60,6 +91,15 @@ class LoginController extends Controller {
    * The logout action
    * Perform logout, redirect user to main-page
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function logout() {
     LoginModel::logout();
     Redirect::home();
@@ -68,6 +108,15 @@ class LoginController extends Controller {
 
   /**
    * Login with cookie
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function loginWithCookie() {
     // run the loginWithCookie() method in the login-model, put the result in $login_successful (true or false)
@@ -87,6 +136,15 @@ class LoginController extends Controller {
    * Show user's PRIVATE profile
    * Auth::checkAuthentication() makes sure that only logged in users can use this action and see this page
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function showProfile() {
     Auth::checkAuthentication();
     $this->View->render('login/showProfile', array(
@@ -100,6 +158,15 @@ class LoginController extends Controller {
    * Show edit-my-username page
    * Auth::checkAuthentication() makes sure that only logged in users can use this action and see this page
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function editUsername() {
     Auth::checkAuthentication();
     $this->View->render('login/editUsername');
@@ -108,6 +175,15 @@ class LoginController extends Controller {
   /**
    * Edit user name (perform the real action after form has been submitted)
    * Auth::checkAuthentication() makes sure that only logged in users can use this action
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function editUsername_action() {
     Auth::checkAuthentication();
@@ -124,6 +200,15 @@ class LoginController extends Controller {
    * Show edit-my-user-email page
    * Auth::checkAuthentication() makes sure that only logged in users can use this action and see this page
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function editUserEmail() {
     Auth::checkAuthentication();
     $this->View->render('login/editUserEmail');
@@ -134,16 +219,33 @@ class LoginController extends Controller {
    * Auth::checkAuthentication() makes sure that only logged in users can use this action and see this page
    */
   // make this POST
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function editUserEmail_action() {
     Auth::checkAuthentication();
     UserModel::editUserEmail(Request::post('user_email'));
     Redirect::to('login/editUserEmail');
   }
 
-
   /**
    * Show the change-account-type page
    * Auth::checkAuthentication() makes sure that only logged in users can use this action and see this page
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function changeUserRole() {
     Auth::checkAuthentication();
@@ -154,6 +256,15 @@ class LoginController extends Controller {
    * Perform the account-type changing
    * Auth::checkAuthentication() makes sure that only logged in users can use this action
    * POST-request
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function changeUserRole_action() {
     Auth::checkAuthentication();
@@ -172,6 +283,15 @@ class LoginController extends Controller {
    * Register page
    * Show the register form, but redirect to main-page if user is already logged-in
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function register() {
 
 //    if (LoginModel::isUserLoggedIn()) {
@@ -184,6 +304,15 @@ class LoginController extends Controller {
   /**
    * Register page action
    * POST-request after form submit
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function register_action() {
     $registration_successful = RegistrationModel::registerNewUser();
@@ -199,6 +328,15 @@ class LoginController extends Controller {
    * @param int $user_id user's id
    * @param string $user_activation_verification_code user's verification token
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function verify($user_id, $user_activation_verification_code) {
     if (isset($user_id) && isset($user_activation_verification_code)) {
       RegistrationModel::verifyNewUser($user_id, $user_activation_verification_code);
@@ -211,6 +349,15 @@ class LoginController extends Controller {
   /**
    * Show the request-password-reset page
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function requestPasswordReset() {
     $this->View->render('login/requestPasswordReset');
   }
@@ -218,6 +365,15 @@ class LoginController extends Controller {
   /**
    * The request-password-reset action
    * POST-request after form submit
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function requestPasswordReset_action() {
     PasswordResetModel::requestPasswordReset(Request::post('user_name_or_email'));
@@ -228,6 +384,15 @@ class LoginController extends Controller {
    * Verify the verification token of that user (to show the user the password editing view or not)
    * @param string $user_name username
    * @param string $verification_code password reset verification token
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function verifyPasswordReset($user_name, $verification_code) {
     // check if this the provided verification code fits the user's verification code
@@ -250,6 +415,15 @@ class LoginController extends Controller {
    * POST request !
    * TODO this is an _action
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function setNewPassword() {
     PasswordResetModel::setNewPassword(
       Request::post('user_name'), Request::post('user_password_reset_hash'),
@@ -262,6 +436,15 @@ class LoginController extends Controller {
    * Password Change Page
    * Show the password form if user is logged in, otherwise redirect to login page
    */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
+   */
   public function changePassword() {
     Auth::checkAuthentication();
     $this->View->render('login/changePassword');
@@ -270,6 +453,15 @@ class LoginController extends Controller {
   /**
    * Password Change Action
    * Submit form, if retured positive redirect to index, otherwise show the changePassword page again
+   */
+  /**
+   * @function 
+   * @public
+   * @static
+   * @returns NONE
+   * @desc
+   * @param {string} foo Use the 'foo' param for bar.
+   * @example NONE
    */
   public function changePassword_action() {
     $result = PasswordResetModel::changePassword(
