@@ -4,7 +4,20 @@
   $query->execute();
   $result = $query->fetchAll();
   $count = 0;
-  echo "<thead><tr><th>Table Number</th><th>Subject</th><th>Sub-Subject</th><th>Requested Tutor</th><th>Time In</th><th>Wait Time Elapsed</th><th>Help Time Elapsed</th><th>Responding Tutor</th></tr></thead>";
+  echo "
+    <thead>
+      <tr>
+        <th>Table Number</th>
+        <th>Subject </th>
+        <th>Sub-Subject </th>
+        <th>Requested Tutor</th>
+        <th>Time In</th>
+        <th>Wait Time Elapsed</th>
+        <th>Help Time Elapsed</th>
+        <th>Responding Tutor</th>
+      </tr>
+    </thead>
+  ";
   foreach ($result as $record) {
     echo "<tr><td>";
     echo $record->tableNo;
@@ -44,4 +57,3 @@
     echo "</td></tr>";
   }
 ?>
-

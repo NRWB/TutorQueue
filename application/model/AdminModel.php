@@ -10,7 +10,7 @@
 class AdminModel {
 
   /**
-   * @function 
+   * @function setAccountDeletionStatus
    * @public
    * @static
    * @returns NONE
