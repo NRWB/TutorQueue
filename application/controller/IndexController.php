@@ -32,7 +32,7 @@ class IndexController extends Controller {
    * @example NONE
    */
   public function index() {
-    $this->View->renderWithoutHeaderAndFooter(
+    $this->View->renderEx(
 //    $this->View->render(
       'index/index'
     );
@@ -47,6 +47,6 @@ class IndexController extends Controller {
    * @example NONE
    */
   public function updateTable() {
-    $this->View->renderWithoutHeaderAndFooter('index/updateTable');
+    $this->View->renderEx('index/updateTable');
   }
 }

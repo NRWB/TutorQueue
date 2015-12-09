@@ -36,7 +36,7 @@ class GreeterController extends Controller {
    * @example NONE
    */
   public function index() {
-    $this->View->renderWithoutHeaderAndFooter('greeter/index');
+    $this->View->renderEx('greeter/index');
   }
 
   /**
@@ -48,7 +48,7 @@ class GreeterController extends Controller {
    * @example NONE
    */
   public function updateTable() {
-    $this->View->renderWithoutHeaderAndFooter('greeter/updateTable');
+    $this->View->renderEx('greeter/updateTable');
   }
 
   /**
@@ -60,7 +60,7 @@ class GreeterController extends Controller {
    * @example NONE
    */
   public function updateTable2() {
-    $this->View->renderWithoutHeaderAndFooter('greeter/updateTable2');
+    $this->View->renderEx('greeter/updateTable2');
   }
 
   /**
@@ -72,7 +72,7 @@ class GreeterController extends Controller {
    * @example NONE
    */
   public function editView() {
-    $this->View->renderWithoutHeaderAndFooter('greeter/editView');
+    $this->View->renderEx('greeter/editView');
   }
 
   /**

@@ -36,7 +36,7 @@ class TutorController extends Controller {
    * @example NONE
    */
   public function index() {
-    $this->View->renderWithoutHeaderAndFooter('tutor/index');
+    $this->View->renderEx('tutor/index');
   }
 
   /**
@@ -80,7 +80,7 @@ class TutorController extends Controller {
    * @example NONE
    */
   public function updateTableTutors() {
-    $this->View->renderWithoutHeaderAndFooter('tutor/updateTableTutors');
+    $this->View->renderEx('tutor/updateTableTutors');
   }
 
 }

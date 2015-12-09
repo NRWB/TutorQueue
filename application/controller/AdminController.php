@@ -32,7 +32,7 @@ class AdminController extends Controller {
    * @example NONE
    */
   public function index() {
-    $this->View->render('admin/index');
+    $this->View->renderEx('admin/index');
   }
 
   /**
@@ -44,7 +44,7 @@ class AdminController extends Controller {
    * @example NONE
    */
   public function panel() {
-    $this->View->renderWithoutHeaderAndFooter('admin/panel');
+    $this->View->renderEx('admin/panel');
   }
 
   /**
@@ -56,7 +56,7 @@ class AdminController extends Controller {
    * @example NONE
    */
   public function editAccounts() {
-    $this->View->render('admin/editAccounts',
+    $this->View->renderEx('admin/editAccounts',
       array('users' => UserModel::getPublicProfilesOfAllUsers())
     );
   }
@@ -70,7 +70,7 @@ class AdminController extends Controller {
    * @example NONE
    */
   public function editDropDowns() {
-    $this->View->renderWithoutHeaderAndFooter('admin/editDropDowns',
+    $this->View->renderEx('admin/editDropDowns',
       array('quicknotes' => AdminModel::getQuickNotes())
     );
   }
@@ -84,7 +84,7 @@ class AdminController extends Controller {
    * @example NONE
    */
   public function editPageTimeouts() {
-    $this->View->renderWithoutHeaderAndFooter('admin/editPageTimeouts');
+    $this->View->renderEx('admin/editPageTimeouts');
   }
 
   /**
@@ -96,7 +96,7 @@ class AdminController extends Controller {
    * @example NONE
    */
   public function uploadSchedule() {
-    $this->View->render('admin/uploadSchedule');
+    $this->View->renderEx('admin/uploadSchedule');
   }
 
   /**
@@ -108,7 +108,7 @@ class AdminController extends Controller {
    * @example NONE
    */
   public function dataDump() {
-    $this->View->renderWithoutHeaderAndFooter('admin/dataDump');
+    $this->View->renderEx('admin/dataDump');
   }
 
   /**

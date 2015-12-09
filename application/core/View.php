@@ -13,7 +13,8 @@ class View {
    * @param string $filename Path of the to-be-rendered view, usually folder/file(.php)
    * @param array $data Data to be used in the view
    */
-  public function render($filename, $data = null) {
+/*
+  public function renderEx($filename, $data = null) {
 //    header('X-Frame-Options: sameorigin');
     if ($data) {
       foreach ($data as $key => $value) {
@@ -24,6 +25,16 @@ class View {
     require Config::get('PATH_VIEW') . $filename . '.php';
     require Config::get('PATH_VIEW') . '_templates/footer.php';
   }
+*/
+  public function renderEx($filename, $data = null) {
+    if ($data) {
+      foreach ($data as $key => $value) {
+        $this->{$key} = $value;
+      }
+    }
+    require Config::get('PATH_VIEW') . $filename . '.php';
+  }
+
 
   /**
    * Similar to render, but accepts an array of separate views to render between the header and footer. Use like

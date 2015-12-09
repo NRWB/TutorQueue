@@ -37,7 +37,7 @@ class StudentController extends Controller {
    */
   public function index() {
 //    $this->View->render('student/index',
-    $this->View->renderWithoutHeaderAndFooter('student/index',
+    $this->View->renderEx('student/index',
       array('subjs' => StudentModel::getSubjects())
 //      array('subsubjs' => StudentModel::getSubSubjects()),
 //      array('activeTutors' => StudentModel::getActiveTutors())
@@ -54,7 +54,7 @@ class StudentController extends Controller {
    * @example NONE
    */
   public function populateSubSubj() {
-    $this->View->renderWithoutHeaderAndFooter('student/populateSubSubj');
+    $this->View->renderEx('student/populateSubSubj');
   }
 
   /**
@@ -66,7 +66,7 @@ class StudentController extends Controller {
    * @example NONE
    */
   public function updateDropDowns() {
-    $this->View->render('student/updateDropDowns');
+    $this->View->renderEx('student/updateDropDowns');
   }
 
   /**
@@ -79,7 +79,7 @@ class StudentController extends Controller {
    */
   public function tableSetup() {
     if (intval(Session::get('table_number')[0]) < 0) {
-      $this->View->renderWithoutHeaderAndFooter('student/TableSetup');
+      $this->View->renderEx('student/TableSetup');
     } else {
       self::index();
     }

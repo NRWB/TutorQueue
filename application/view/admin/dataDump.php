@@ -8,17 +8,9 @@
 
   <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/style.css" />
   <link rel="stylesheet" href="<?php echo Config::get('URL'); ?>css/bootstrap.min.css" />
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
 
-<!--
-  <script src="<?php echo Config::get('URL'); ?>js/jquery-latest.min.js"></script>
-  <script src="<?php echo Config::get('URL'); ?>js/jquery-1.11.3.min.js"></script>
+  <script src="<?php echo Config::get('URL'); ?>js/jquery-latest.min.js"></script> <!--  <script src="<?php echo Config::get('URL'); ?>js/jquery-1.11.3.min.js"></script> -->
   <script src="<?php echo Config::get('URL'); ?>js/bootstrap.min.js"></script>
--->
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 
@@ -64,20 +56,18 @@
 
     </ul>
 
-    <!-- my account -->
-    <ul class="navigation right">
-
-      <?php if (Session::userIsLoggedIn()) : ?>
-        <li <?php if (View::checkForActiveController($filename, "login")) { echo ' class="active" '; } ?> >
-          <a href="<?php echo Config::get('URL'); ?>login/logout">Logout</a>
-        </li>
-
-      <?php endif; ?>
-    </ul>
-
     <?php if (Session::userIsLoggedIn()) { ?>
       <div class="panel panel-header">
-        Logged in as: <?php echo Session::get("user_name"); ?>
+<!--        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number = <?php echo Session::get("table_number"); ?> -->
+        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number =
+        <?php
+          $val = Session::get("table_number");
+          if (gettype($val) == "integer") {
+            echo Session::get("table_number");
+          } else if (gettype($val) == "array") {
+            echo Session::get("table_number")[0];
+          }
+        ?>
       </div>
     <?php } ?>
 

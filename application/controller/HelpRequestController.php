@@ -40,7 +40,7 @@ class HelpRequestController extends Controller {
     );
 */
     if (HelpRequestModel::createHelpRequest(Request::post('hidden_tbl_num'), Request::post('subj_DD'), Request::post('sub_subj_DD'), Request::post('req_tutor_DD'))) {
-      $this->View->render('student/RequestRedirect');
+      $this->View->renderEx('student/RequestRedirect');
     }
     Redirect::toDelay('index', '3');
   }

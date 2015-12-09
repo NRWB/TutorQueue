@@ -32,7 +32,7 @@ class RequestRedirect extends Controller {
    * @example NONE
    */
   public function index() {
-    $this->View->render('student/RequestRedirect');
+    $this->View->renderEx('student/RequestRedirect');
   }
 
   /**
@@ -44,7 +44,7 @@ class RequestRedirect extends Controller {
    * @example NONE
    */
   public function RequestRedirect() {
-    $this->View->render('student/RequestRedirect');
+    $this->View->renderEx('student/RequestRedirect');
   }
 
 }

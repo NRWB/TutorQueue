@@ -36,7 +36,7 @@ class LoginController extends Controller {
       Redirect::home();
     } else {
       $data = array('redirect' => Request::get('redirect') ? Request::get('redirect') : NULL);
-      $this->View->render('login/index', $data);
+      $this->View->renderEx('login/index', $data);
     }
   }
 
@@ -117,7 +117,7 @@ class LoginController extends Controller {
    */
   public function showProfile() {
     Auth::checkAuthentication();
-    $this->View->render('login/showProfile', array(
+    $this->View->renderEx('login/showProfile', array(
       'user_name' => Session::get('user_name'),
       'user_email' => Session::get('user_email'),
       'user_account_type' => Session::get('user_account_type')
@@ -134,7 +134,7 @@ class LoginController extends Controller {
    */
   public function editUsername() {
     Auth::checkAuthentication();
-    $this->View->render('login/editUsername');
+    $this->View->renderEx('login/editUsername');
   }
 
   /**
@@ -166,7 +166,7 @@ class LoginController extends Controller {
    */
   public function editUserEmail() {
     Auth::checkAuthentication();
-    $this->View->render('login/editUserEmail');
+    $this->View->renderEx('login/editUserEmail');
   }
 
   /**
@@ -193,7 +193,7 @@ class LoginController extends Controller {
    */
   public function changeUserRole() {
     Auth::checkAuthentication();
-    $this->View->render('login/changeUserRole');
+    $this->View->renderEx('login/changeUserRole');
   }
 
   /**
@@ -230,7 +230,7 @@ class LoginController extends Controller {
 //    if (LoginModel::isUserLoggedIn()) {
 //      Redirect::home();
 //    } else {
-      $this->View->render('login/register');
+      $this->View->renderEx('login/register');
 //    }
   }
 
@@ -263,7 +263,7 @@ class LoginController extends Controller {
   public function verify($user_id, $user_activation_verification_code) {
     if (isset($user_id) && isset($user_activation_verification_code)) {
       RegistrationModel::verifyNewUser($user_id, $user_activation_verification_code);
-      $this->View->render('login/verify');
+      $this->View->renderEx('login/verify');
     } else {
       Redirect::to('login/index');
     }
@@ -278,7 +278,7 @@ class LoginController extends Controller {
    * @example NONE
    */
   public function requestPasswordReset() {
-    $this->View->render('login/requestPasswordReset');
+    $this->View->renderEx('login/requestPasswordReset');
   }
 
   /**
@@ -307,7 +307,7 @@ class LoginController extends Controller {
     // check if this the provided verification code fits the user's verification code
     if (PasswordResetModel::verifyPasswordReset($user_name, $verification_code)) {
       // pass URL-provided variable to view to display them
-      $this->View->render('login/resetPassword', array(
+      $this->View->renderEx('login/resetPassword', array(
         'user_name' => $user_name,
         'user_password_reset_hash' => $verification_code
       ));
@@ -342,7 +342,7 @@ class LoginController extends Controller {
    */
   public function changePassword() {
     Auth::checkAuthentication();
-    $this->View->render('login/changePassword');
+    $this->View->renderEx('login/changePassword');
   }
 
   /**
