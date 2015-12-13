@@ -95,7 +95,7 @@
 <!--
                           <form method="post" onsubmit="return verifySubmit();" autocomplete="off" action="<?php echo Config::get('URL'); ?>student/table_setup">
 -->
-                          <form method="post" onsubmit="cacheValue();" autocomplete="off" action="<?php echo Config::get('URL'); ?>student/table_setup">
+                          <form method="post" onsubmit="return cacheValue();" autocomplete="off" action="<?php echo Config::get('URL'); ?>student/table_setup">
 
                             <div class="col-xs-4 col-xs-offset-4">
                               <input type="text" class="form-control" id="input_text_field_id" name="input_text_field" placeholder="Enter table #" required>
@@ -149,10 +149,27 @@
       console.log('------------------');
       console.log(sessionStorage.tblNumber);
     }
+    var val = document.getElementById('input_text_field').value;
+    if (isNaN(val)) {
+      alert('table number input is not a number');
+      return false;
+    }
+    var n = parseInt(val);
+    if (n < 0) {
+      alert('no table values less than 0 accepted.');
+      return false;
+    }
+
+    return true;
+
   }
   function verifySubmit() {
     // check if number already exists in DB
     var val = document.getElementById('input_text_field').value;
+    if (isNaN(val)) {
+      alert('table number input is not a number');
+      return false;
+    }
     var n = parseInt(val);
     if (n < 0) {
       alert('no table values less than 0 accepted.');

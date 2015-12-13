@@ -80,6 +80,12 @@ class StudentModel {
    */
   public static function table_num_setup() {
     $tbl_no = Request::post('input_text_field');
+
+    // if all of the characters are not numbers, return false
+    if (!ctype_digit($tbl_no)) {
+      return false;
+    }
+
     $database = DatabaseFactory::getFactory()->getConnection();
     $query = $database->prepare("SELECT * FROM qscDeviceTables.tblDevices WHERE number = :table_number_input");
     $query->execute(
