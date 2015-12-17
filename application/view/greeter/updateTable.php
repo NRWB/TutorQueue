@@ -55,22 +55,6 @@
 
     echo $v1 . ":" . $v2 . ":" . $v3;
 
-/*
-    $curr = date("h:i:s");
-    $hd = substr($curr, 0, 3);
-    $md = substr($curr, 4, 2);
-    $sd = substr($curr, 7, 2);
-
-    $v1 = intval($hd) - intval($hh);
-    $v2 = abs(intval($md) - intval($mm));
-    $v3 = abs(intval($sd) - intval($ss));
-    echo $v1;
-    echo ":";
-    echo $v2;
-    echo ":";
-    echo $v3;
-*/
-
     echo "</td><td>";
     echo "-";
     echo "</td><td>";
