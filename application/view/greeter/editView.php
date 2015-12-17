@@ -58,17 +58,7 @@
 
     <?php if (Session::userIsLoggedIn()) { ?>
       <div class="panel panel-header">
-<!--        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number = <?php echo Session::get("table_number"); ?> -->
-        Logged in as: <?php echo Session::get("user_name"); ?><!--, Table Number =
-        <?php
-          $val = Session::get("table_number");
-          if (gettype($val) == "integer") {
-            echo Session::get("table_number");
-          } else if (gettype($val) == "array") {
-            echo Session::get("table_number")[0];
-          }
-        ?>
--->
+        Logged in as: <?php echo Session::get("user_name"); ?>
       </div>
     <?php } ?>
 
@@ -80,23 +70,19 @@
         <!-- echo out the system feedback (error and success messages) -->
         <?php $this->renderFeedbackMessages(); ?>
 
-        <form action="<?php echo config::get('URL'); ?>greeter/index">
+        <div class="panel panel-default">
 
-          <div class="panel panel-default">
-
-            <!-- Default panel contents -->
-            <div class="panel-heading">
-              Greeter Panel
-            </div>
-
-            <table id="table_holder" class="table">
-            </table>
-
+          <!-- Default panel contents -->
+          <div class="panel-heading">
+            Greeter Panel
           </div>
 
-          <input id="greeter_save_btn_ID" name="greeter_save_btn" type="submit" value="Save Checked/Selected">
+          <table id="table_holder" class="table">
+          </table>
 
-        </form>
+        </div>
+
+        <input id="greeter_save_btn_ID" name="greeter_save_btn" type="submit" value="Save Checked/Selected">
 
       </div>
     </div>
@@ -113,11 +99,70 @@
 
   </div><!-- close class="wrapper" -->
 
-  <script>
+<script>
 
-    var timer = $('#table_holder').load('<?php echo config::get('URL'); ?>greeter/updateTable2');
+  var timer = $('#table_holder').load('<?php echo config::get('URL'); ?>greeter/updateTable2');
 
-  </script>
+  $(document).on('change', 'input[type="checkbox"]', function() {
+    var selection = $(this).val();
+    var selName = $(this)[0].name;
+    var isChecked = $(this).prop("checked");
+    console.log('selection = ' + selection + ', selName = ' + selName + ', prop is checked? = ' + isChecked);
+  });
+
+  $("#greeter_save_btn_ID").on('click', function() {
+    $("#table_holder").find("tr").each(function() {
+
+      var ischecked = $(this).find("input:checkbox").is(":checked");
+
+      if (ischecked) {
+
+        properties_ya = {
+//          rec_id: $(this).find("input:hidden[name=rec_id]").val()
+        };
+//        console.log(' => ' + JSON.stringify($(this).find("input:hidden[name=rec_id]").));
+//        console.log(' => ' + $(this).find("input:hidden[name=rec_id]") );
+
+        $(this).find("input:text, :hidden").each(function() {
+//        console.log($(this));
+//        console.log($(this)[0].value + ' ... ' + JSON.stringify( $(this)[0].value ).length );
+//        console.log(JSON.stringify($(this)[0].name) + ', ' + JSON.stringify($(this)[0].value));
+          properties_ya[$(this)[0].name] = $(this)[0].value;
+        });
+
+        console.log('Associative Array = ' + JSON.stringify(properties_ya));
+
+        $.ajax({
+          url: "<?php echo Config::get('URL'); ?>greeter/editViewSaver",
+          type: "POST",
+          data: properties_ya,
+          success: function(data, textStatus, jqXHR) { location.reload(); console.log("" + textStatus); },
+          error: function (jqXHR, textStatus, errorThrown){ console.log("" + textStatus); }
+        });
+
+      }
+
+    });
+  });
+
+
+/*
+  $("#greeter_save_btn_ID").on('click', function() {
+    $(":checkbox").each(function() {
+      var ischecked = $(this).is(":checked");
+      if (ischecked) {
+        console.log($(this).parent("tr").find('input[type=text]').text());
+      }
+    });
+  });
+*/
+
+//  $('#table_holder').find('input:checkbox[id$="is_checked"]').click(function() {
+//    var isChecked = $(this).prop("checked");
+//    console.log(isChecked);
+//  });
+
+</script>
 
 </body>
 </html>

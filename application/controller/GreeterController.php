@@ -75,6 +75,18 @@ class GreeterController extends Controller {
     $this->View->renderEx('greeter/editView');
   }
 
+  public function editViewSaver() {
+    GreeterModel::editViewSaver(
+      Request::post('rec_id'),
+      Request::post('tbl_no'),
+      Request::post('subj'),
+      Request::post('sub_subj'),
+      Request::post('tut_req')
+    );
+    Redirect::to("greeter/index");
+  }
+
+
   /**
    * @function actionAccountSettings
    * @public

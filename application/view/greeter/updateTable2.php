@@ -1,52 +1,45 @@
 <?php
   $database = DatabaseFactory::getFactory()->getConnection();
-  $query = $database->prepare("SELECT * FROM qscQueue.tblRequests WHERE serviceState IN ('wait', 'progress')");
+  $query = $database->prepare("SELECT * FROM qscQueue.tblRequests WHERE serviceState IN ('wait', 'progress', 'done')");
   $query->execute();
   $result = $query->fetchAll();
-  $count = 0;
-  echo "<thead>
-          <tr>
-            <th>Select</th>
-            <th>Table Number</th>
-            <th>Subject</th>
-            <th>Sub-Subject</th>
-            <th>Requested Tutor</th>
-            <th>Time In</th>
-            <th>Wait Time Elapsed</th>
-            <th>Help Time Elapsed</th>
-            <th>Responding Tutor</th>
-          </tr>
-        </thead>";
+
+  echo "<thead><tr><th>Selected</th><th>Table Number</th><th>Subject</th><th>Sub-Subject</th><th>Requested Tutor</th><th>Time In</th><th>Wait Time Elapsed</th><th>Help Time Elapsed</th><th>Responding Tutor</th></tr></thead>";
 
   foreach ($result as $record) {
 
     // The unique ID (hidden)
     $theID = $record->id;
-    echo "<input name='hid_id' type='hidden' value='$theID'>";
 
-    // Determine if this entry is to be updated
     echo "<tr><td>";
-    echo "<input name='is_checked' type='checkbox'>";
+
+    echo "<input name='rec_id' type='hidden' value='$theID'>";
+
+    echo "<input name='chkBox' id='".intval($theID)."' type='checkbox'>";
+
     echo "</td><td>";
 
     $aaa = $record->tableNo;
-    echo "<input name='tbl_no' type='text' placeholder='$aaa' size='3'>";
+    echo "<input name='tbl_no' id='".intval($theID)."' type='text' placeholder='$aaa' size='3'>";
+
     echo "</td><td>";
 
     $bbb = $record->subject;
-    echo "<input name='the_subj' type='text' placeholder='$bbb' size='8'>";
+    echo "<input name='subj' id='".intval($theID)."' type='text' placeholder='$bbb' size='8'>";
+
     echo "</td><td>";
 
     $ccc = $record->subSubject;
-    echo "<input name='the_sub_subj' type='text' placeholder='$ccc' size='8'>";
+    echo "<input name='sub_subj' id='".intval($theID)."' type='text' placeholder='$ccc' size='8'>";
+
     echo "</td><td>";
 
     $ddd = $record->tutorRequested;
-    echo "<input name='the_tut' type='text' placeholder='$ddd' size='8'>";
+    echo "<input name='tut_req' id='".intval($theID)."' type='text' placeholder='$ddd' size='8'>";
+
     echo "</td><td>";
 
-    echo substr($record->tsRequest,10);
-    echo "</td><td>";
+    echo substr($record->tsRequest, 10);
 
     // wait time (counter)
     $orig = substr($record->tsRequest, 10);
@@ -65,12 +58,19 @@
     if (intval($v3) < 0) {
       $v3 = intval($v3) + 60;
     }
+
+    echo "</td><td>";
+
     echo $v1 . ":" . $v2 . ":" . $v3;
 
     echo "</td><td>";
+
     echo "-";
+
     echo "</td><td>";
+
     echo $record->helpingTutor;
+
     echo "</td></tr>";
   }
 ?>

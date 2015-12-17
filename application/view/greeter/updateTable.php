@@ -1,6 +1,6 @@
 <?php
   $database = DatabaseFactory::getFactory()->getConnection();
-  $query = $database->prepare("SELECT * FROM qscQueue.tblRequests WHERE serviceState IN ('wait', 'progress')");
+  $query = $database->prepare("SELECT * FROM qscQueue.tblRequests WHERE serviceState IN ('wait', 'progress', 'done')");
   $query->execute();
   $result = $query->fetchAll();
   $count = 0;

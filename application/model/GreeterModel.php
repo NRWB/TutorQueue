@@ -9,6 +9,45 @@
  */
 class GreeterModel {
 
+  public static function editViewSaver($update_id, $update_tableID, $update_subject, $update_sub_subject, $update_tutor_requested) {
+    $sql = "UPDATE qscQueue.tblRequests SET ";
+
+    if ((strlen($update_tableID) == 0) && (strlen($update_subject) == 0) && (strlen($update_sub_subject) == 0) && (strlen($update_tutor_requested) == 0)) {
+      Session::add('feedback_positive', 'Nothing to update');
+      return;
+    }
+
+    $arr = array(':u_id' => $update_id);
+
+    if (strlen($update_tableID) != 0) {
+      $sql = $sql . "tableNo = :u_tbl_num , ";
+      $arr[':u_tbl_num'] = $update_tableID;
+    }
+
+    if (strlen($update_subject) != 0) {
+      $sql = $sql . "subject = :u_subj , ";
+      $arr[':u_subj'] = $update_subject;
+    }
+
+    if (strlen($update_sub_subject) != 0) {
+      $sql = $sql . "subSubject = :u_sub_subj , ";
+      $arr[':u_sub_subj'] = $update_sub_subject;
+    }
+
+    if (strlen($update_tutor_requested) != 0) {
+      $sql = $sql . "tutorRequested = :u_req_tut ";
+      $arr[':u_req_tut'] = $update_tutor_requested;
+    }
+
+    $sql = $sql . "WHERE tblRequests.id = :u_id";
+
+    $database = DatabaseFactory::getFactory()->getConnection();
+
+    $query = $database->prepare($sql);
+
+    $query->execute($arr);
+  }
+
   /**
    * @function setRequestDetails
    * @public
