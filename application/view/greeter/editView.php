@@ -59,7 +59,7 @@
     <?php if (Session::userIsLoggedIn()) { ?>
       <div class="panel panel-header">
 <!--        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number = <?php echo Session::get("table_number"); ?> -->
-        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number =
+        Logged in as: <?php echo Session::get("user_name"); ?><!--, Table Number =
         <?php
           $val = Session::get("table_number");
           if (gettype($val) == "integer") {
@@ -68,6 +68,7 @@
             echo Session::get("table_number")[0];
           }
         ?>
+-->
       </div>
     <?php } ?>
 
@@ -79,20 +80,22 @@
         <!-- echo out the system feedback (error and success messages) -->
         <?php $this->renderFeedbackMessages(); ?>
 
-        <div class="panel panel-default">
+        <form action="<?php echo config::get('URL'); ?>greeter/index">
 
-          <!-- Default panel contents -->
-          <div class="panel-heading">
-            Greeter Panel
+          <div class="panel panel-default">
+
+            <!-- Default panel contents -->
+            <div class="panel-heading">
+              Greeter Panel
+            </div>
+
+            <table id="table_holder" class="table">
+            </table>
+
           </div>
 
-          <table id="table_holder" class="table">
-          </table>
+          <input id="greeter_save_btn_ID" name="greeter_save_btn" type="submit" value="Save Checked/Selected">
 
-        </div>
-
-        <form action="<?php echo config::get('URL'); ?>greeter/index">
-          <input id="" name="" type="submit" value="Save Checked/Selected">
         </form>
 
       </div>

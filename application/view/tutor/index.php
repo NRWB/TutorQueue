@@ -64,7 +64,6 @@
 
     <?php if (Session::userIsLoggedIn()) { ?>
       <div class="panel panel-header">
-<!--        Logged in as: <?php echo Session::get("user_name"); ?>, Table Number = <?php echo Session::get("table_number"); ?> -->
         Logged in as: <?php echo Session::get("user_name"); ?>, Table Number =
         <?php
           $val = Session::get("table_number");
@@ -111,17 +110,6 @@
                   </div> <!-- End "table-responsive" -->
                 </div> <!-- End "panel-body" -->
 
-<!--
-                <div align="left">
-                  <div class="panel-body">
-
-                    <a id="add_student" class="btn btn-default" role="button">
-                      Add Student to Queue
-                    </a>
-
-                  </div>
-                </div>
--->
 
                 <div align="right">
                   <div class="panel-body">
@@ -167,44 +155,6 @@
 
   $('#table_holder').load('<?php echo config::get('URL'); ?>tutor/updateTableTutors');
 
-// http://stackoverflow.com/questions/2145012/adding-rows-dynamically-with-jquery
-  $(document).ready(function() {
-
-    $("#add_student").click(function() {
-//      $('#table_holder tbody>tr:last').clone(true).insertAfter('#table_holder tbody>tr:last');
-
-//      $.post("<?php echo Config::get('URL'); ?>HelpRequest/create", function(){} );
-      var formSubjData = {
-
-//        hidden_tbl_num: "<?php echo Session::get('table_number'); ?>",
-
-        hidden_tbl_num: "<?php
-                            $val = Session::get('table_number');
-                            if (gettype($val) == 'integer') {
-                              echo Session::get('table_number');
-                            } else if (gettype($val) == 'array') {
-                              echo Session::get('table_number')[0];
-                            }
-                          ?>",
-
-        subj_DD: "CSS (CSS)"
-      };
-
-      $.ajax({
-        url: "<?php echo Config::get('URL'); ?>HelpRequest/create",
-        type: "POST",
-        data: formSubjData,
-        success: function(data, textStatus, jqXHR){},
-        error: function (jqXHR, textStatus, errorThrown){}
-      });
-
-//      $('#table_holder').load('<?php echo config::get('URL'); ?>tutor/updateTableTutors');
-      location.reload();
-
-      return false;
-    });
-  });
-
   $(document).on('change', 'input[type="checkbox"]', function() {
     var selection = $(this).val();
     var selName = $(this)[0].name;
@@ -231,28 +181,24 @@
     }
   });
 
-//  $(document).ready(function() {
-//    $("input[type='radio']").change(function () {
-//    $("input[type='radio']").live('change', function () {
 // http://stackoverflow.com/questions/19199767/jquery-radio-button-submit-value-onclick
-    $(document).on('change', 'input[type="radio"]', function() {
-      var selection = $(this).val();
-      var selName = $(this)[0].name;
+  $(document).on('change', 'input[type="radio"]', function() {
+    var selection = $(this).val();
+    var selName = $(this)[0].name;
 
-      var formSubjData = {
-        name_entry: selName,
-        progress_state: selection
-      };
+    var formSubjData = {
+      name_entry: selName,
+      progress_state: selection
+    };
 
-      $.ajax({
-        url: "<?php echo Config::get('URL'); ?>HelpRequest/update",
-        type: "POST",
-        data: formSubjData,
-        success: function(data, textStatus, jqXHR){ alert("Update: " + textStatus); },
-        error: function (jqXHR, textStatus, errorThrown){ console.log("state change to " + selection + " [error]: " + textStatus); }
-      });
+    $.ajax({
+      url: "<?php echo Config::get('URL'); ?>HelpRequest/update",
+      type: "POST",
+      data: formSubjData,
+      success: function(data, textStatus, jqXHR){ alert("Update: " + textStatus); },
+      error: function (jqXHR, textStatus, errorThrown){ console.log("state change to " + selection + " [error]: " + textStatus); }
     });
-//  });
+  });
 
 </script>
 
