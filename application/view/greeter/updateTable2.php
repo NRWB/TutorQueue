@@ -4,11 +4,27 @@
   $query->execute();
   $result = $query->fetchAll();
   $count = 0;
-  echo "<thead><tr><th>Select</th><th>Table Number</th><th>Subject</th><th>Sub-Subject</th><th>Requested Tutor</th><th>Time In</th><th>Wait Time Elapsed</th><th>Help Time Elapsed</th><th>Responding Tutor</th></tr></thead>";
+  echo "<thead>
+          <tr>
+            <th>Select</th>
+            <th>Table Number</th>
+            <th>Subject</th>
+            <th>Sub-Subject</th>
+            <th>Requested Tutor</th>
+            <th>Time In</th>
+            <th>Wait Time Elapsed</th>
+            <th>Help Time Elapsed</th>
+            <th>Responding Tutor</th>
+          </tr>
+        </thead>";
+
   foreach ($result as $record) {
-    echo "<tr><td>";
+
+    // The unique ID
     $theID = $record->id;
     echo "<input name='hid_id' type='hidden' value='$theID'>";
+
+    echo "<tr><td>";
     echo "<input name='is_checked' type='checkbox'>";
     echo "</td><td>";
 

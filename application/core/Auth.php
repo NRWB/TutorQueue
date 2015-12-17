@@ -94,6 +94,7 @@ class Auth {
    * If so, then logout.
    */
   public static function checkSessionConcurrency() {
+  /*
     if (Session::userIsLoggedIn()) {
       if (Session::isConcurrentSessionExists()) {
         LoginModel::logout();
@@ -101,5 +102,6 @@ class Auth {
         exit();
       }
     }
+  */
   }
 }

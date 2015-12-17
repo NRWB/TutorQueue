@@ -138,7 +138,10 @@ class HelpRequestModel {
    */
   public static function removeEntry($the_id) {
     $database = DatabaseFactory::getFactory()->getConnection();
-    $sql = "DELETE FROM qscQueue.tblRequests WHERE tblRequests.id = :removable_id";
+// bad!, don't actually delete, just remove from the active states
+//    $sql = "DELETE FROM qscQueue.tblRequests WHERE tblRequests.id = :removable_id";
+//    $sql = "UPDATE `qscQueue.tblRequests` SET serviceState = archived WHERE tblRequests.id = :removable_id";
+    $sql = "UPDATE  `qscQueue`.`tblRequests` SET  `serviceState` =  'archived' WHERE  `tblRequests`.`id` = :removable_id";
     $query = $database->prepare($sql);
     $res = $query->execute(array(':removable_id' => $the_id));
   }

@@ -42,9 +42,6 @@
           </li>
         <?php endif; ?>
 
-        <!-- Students -->
-        <!-- Should not have header shown as students stay on one page and do not need to log in or out -->
-
       <?php } else { ?>
 
         <!-- for not logged in users -->
@@ -54,6 +51,15 @@
 
       <?php } ?>
 
+    </ul>
+
+    <!-- Students user access (here only) given logout btn - assumed tutors access only, given kiosk mode -->
+    <ul class="navigation right">
+      <?php if (Session::userIsLoggedIn()) : ?>
+        <li <?php if (View::checkForActiveController($filename, "login")) { echo ' class="active" '; } ?> >
+          <a href="<?php echo Config::get('URL'); ?>login/logout">Logout</a>
+        </li>
+      <?php endif; ?>
     </ul>
 
     <?php if (Session::userIsLoggedIn()) { ?>
@@ -141,7 +147,7 @@
           </div> <!-- end "row" -->
 
         </div>
-
+        <sup>1</sup> Feature currently disabled. Work around may include note and/or re-entry to QSC Queue.
       </div>
     </div>
 
@@ -169,9 +175,9 @@
 
 //      $.post("<?php echo Config::get('URL'); ?>HelpRequest/create", function(){} );
       var formSubjData = {
-/*
-        hidden_tbl_num: "<?php echo Session::get('table_number'); ?>",
-*/
+
+//        hidden_tbl_num: "<?php echo Session::get('table_number'); ?>",
+
         hidden_tbl_num: "<?php
                             $val = Session::get('table_number');
                             if (gettype($val) == 'integer') {
@@ -204,20 +210,25 @@
     var selName = $(this)[0].name;
 
     if (selName == "removeChkBox") {
-      var formSubjData = {
-        the_id: $(this)[0].id
-      };
+      var r = confirm("Confirm archive on this record?");
+      if (r == true) {
+        var formSubjData = {
+          the_id: $(this)[0].id
+        };
 
-      $.ajax({
-        url: "<?php echo Config::get('URL'); ?>HelpRequest/remove",
-        type: "POST",
-        data: formSubjData,
-        success: function(data, textStatus, jqXHR){ alert(textStatus); },
-        error: function (jqXHR, textStatus, errorThrown){ alert(textStatus); }
-      });
+        $.ajax({
+          url: "<?php echo Config::get('URL'); ?>HelpRequest/remove",
+          type: "POST",
+          data: formSubjData,
+          success: function(data, textStatus, jqXHR) { console.log("remove/archive [success]: " + textStatus); },
+          error: function (jqXHR, textStatus, errorThrown){ console.log("remove/archive [error]: " + textStatus); }
+        });
 
+      } else {
+        console.log("perhaps uncheck the remove box here?");
+      }
+      location.reload();
     }
-
   });
 
 //  $(document).ready(function() {
@@ -225,9 +236,7 @@
 //    $("input[type='radio']").live('change', function () {
 // http://stackoverflow.com/questions/19199767/jquery-radio-button-submit-value-onclick
     $(document).on('change', 'input[type="radio"]', function() {
-
       var selection = $(this).val();
-
       var selName = $(this)[0].name;
 
       var formSubjData = {
@@ -239,11 +248,9 @@
         url: "<?php echo Config::get('URL'); ?>HelpRequest/update",
         type: "POST",
         data: formSubjData,
-        success: function(data, textStatus, jqXHR){ alert(textStatus); },
-        error: function (jqXHR, textStatus, errorThrown){ alert(textStatus); }
+        success: function(data, textStatus, jqXHR){ alert("Update: " + textStatus); },
+        error: function (jqXHR, textStatus, errorThrown){ console.log("state change to " + selection + " [error]: " + textStatus); }
       });
-
-      alert("State changed to: " + selection);
     });
 //  });
 

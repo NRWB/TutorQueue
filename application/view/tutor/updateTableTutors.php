@@ -19,7 +19,7 @@
           <th>Notes</th>
           <th>Responding<br>Tutor</th>
           <th>Remove</th>
-          <th>Add to<br>front</th>
+          <th>Add to<br>front <b>(disabled<sup>1</sup>)</b></th>
       </tr>
     </thead>
   ";
@@ -87,7 +87,7 @@
     echo "</td><td>";
     echo "<input type='checkbox' name='removeChkBox' id='$record->id'>";
     echo "</td><td>";
-    echo "<input type='checkbox' name='addTopChkBox' id='$record->id'>";
+    echo "<input type='checkbox' name='addTopChkBox' id='$record->id' disabled>";
     echo "</td></tr>";
   }
 ?>

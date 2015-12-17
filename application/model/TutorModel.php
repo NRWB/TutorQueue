@@ -66,13 +66,14 @@ class TutorModel {
     $database = DatabaseFactory::getFactory()->getConnection();
     $tut_code = Request::post('input_tutor_text_code');
 //    $query = $database->prepare("SELECT * FROM qscTutorList.tblAllTutors WHERE tutcode = :the_tutor_code LIMIT 1");
-    $query = $database->prepare("SELECT * FROM qscTutorList.tblAllTutors WHERE tutorIDCode = :the_tutor_code LIMIT 1");
+    $query = $database->prepare("SELECT * FROM qscTutorList.tblAllTutors WHERE tutCode = :the_tutor_code LIMIT 1");
     $query->execute(
       array(
         ':the_tutor_code' => $tut_code
       )
     );
     if ($query->rowCount() == 1) {
+      Session::set('tmp_tutor_code', $tut_code);
       return true;
     } else {
       return false;
@@ -91,7 +92,7 @@ class TutorModel {
   public static function logoutTimeoutTutor() {
     LoginModel::logout();
     $login_successful = LoginModel::login(
-      'studenttest', 'system', ''
+      'student', 'system', ''
     );
   }
 

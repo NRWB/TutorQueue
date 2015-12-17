@@ -54,7 +54,7 @@ class TutorController extends Controller {
     } else {
 //      self::index();
 //      $this->View->renderWithoutHeaderAndFooter('student/index');
-      Redirect::to('student/index');
+      Redirect::to('index/index');
     }
   }
 
@@ -67,8 +67,8 @@ class TutorController extends Controller {
    * @example NONE
    */
   public function leaveHelpPanel() {
-    TutorModel::logoutTimeoutTutor();
-      Redirect::to('index/index');
+//    TutorModel::logoutTimeoutTutor();
+    Redirect::to('index/index');
   }
 
   /**
