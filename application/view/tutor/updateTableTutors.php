@@ -74,7 +74,7 @@
     echo "</td><td>";
 
     echo "<input type='text' name='customNotes' title='Notes are saved upon removal'>";
-    echo "<select>";
+    echo "<select class='input-small'>";
     echo "<option selected='selected'></option>";
 
     foreach ($r2 as $rec2) {
