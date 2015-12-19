@@ -186,6 +186,17 @@
     var selection = $(this).val();
     var selName = $(this)[0].name;
 
+    console.log($(this)[0]);
+
+    if ($(this)[0].value == 'wait') {
+      // remove tutor tag(s)
+    } else {
+      // append tutor tag / update tutor tag
+      var tutor_tag_id = "<?php echo Session::get('tmp_tutor_code'); ?>";
+      var tutor_name = "";
+      console.log('tutor_tag_id = ' + tutor_tag_id);
+    }
+
     var formSubjData = {
       name_entry: selName,
       progress_state: selection
